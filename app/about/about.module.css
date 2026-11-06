@@ -1,0 +1,166 @@
+/* Simplified Arcalogix About page. Scoped to /about: the homepage and header are unchanged. */
+.aboutPage { overflow: clip; }
+.anchorSection { scroll-margin-top: calc(var(--header-height) + 22px); }
+.aboutPage :global(.eyebrow) { margin-bottom: 22px; }
+
+/* Hero: one message, one visual. */
+.hero { background: radial-gradient(ellipse 58% 57% at 76% 38%,#f6f4f5 0%,transparent 80%),#fff; border-bottom: 1px solid #e9e9ec; }
+.heroLayout { min-height: min(850px, calc(100svh - var(--header-height))); display: grid; grid-template-columns: minmax(0,1.04fr) minmax(0,.96fr); gap: clamp(55px,7vw,120px); align-items: center; padding-block: clamp(105px,10vw,170px); }
+.heroCopy { min-width: 0; animation: aboutEnter .7s cubic-bezier(.2,.8,.2,1) both; }
+.heroCopy h1 { max-width: 840px; margin: 0; font-weight: 780; font-size: clamp(54px,5.9vw,94px); line-height: 1.025; letter-spacing: -.074em; }
+.heroCopy h1 span { color: #999aa3; }
+.heroLead { margin: 29px 0 0; max-width: 650px; color: #6e7079; font-size: clamp(18px,1.6vw,22px); letter-spacing: -.025em; line-height: 1.58; }
+.heroActions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 38px; }
+.heroTextLink { display: inline-flex; align-items: center; gap: 18px; color: var(--red); border-bottom: 1px solid #cf5762; font-size: 14px; font-weight: 740; padding: 10px 0; transition: border-color .2s ease; }
+.heroTextLink:hover { border-color: var(--red); }
+
+/* Graphic showing the two audiences, with the spatial model in the middle. */
+.network { min-width: 0; border: 1px solid #e1e2e7; border-radius: 21px; background: #fff; box-shadow: 0 28px 90px rgba(20,20,30,.055); overflow: hidden; animation: aboutEnter .75s .14s cubic-bezier(.2,.8,.2,1) both; }
+.networkTop { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 23px 26px; border-bottom: 1px solid #ebecf0; font-size: 9px; letter-spacing: .15em; color: #8e9099; font-weight: 770; }
+.networkContent { display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: 30px clamp(22px,2.8vw,42px) 35px; }
+.networkSide { padding: 21px 25px 23px; background: #f7f7f9; border: 1px solid #ededf0; border-radius: 13px; }
+.networkSide > span, .networkCore > span { display: block; color: var(--red); font-size: 9px; font-weight: 790; letter-spacing: .15em; }
+.networkSide strong { display: block; margin: 12px 0; font-size: clamp(23px,2.25vw,32px); line-height: 1.11; letter-spacing: -.055em; }
+.networkSide small { color: #898b93; line-height: 1.5; font-size: 11px; }
+.networkLine { height: 36px; width: 1px; background: #d7d8de; align-self: center; position: relative; }
+.networkLine i { position: absolute; top: 50%; left: 50%; width: 8px; height: 8px; border-radius: 50%; transform: translate(-50%,-50%); background: var(--red); box-shadow: 0 0 0 4px #faebed; }
+.networkCore { display: grid; grid-template-columns: 132px 1fr; gap: 17px; align-items: center; padding: 22px; border-radius: 13px; color: white; background: #c7192a; }
+.networkCore > span { color: #ffdee3; grid-column: 2; grid-row: 1; align-self: end; }
+.networkCore strong { grid-column: 2; grid-row: 2; align-self: start; display: block; font-size: clamp(20px,2.25vw,31px); line-height: 1.1; letter-spacing: -.057em; }
+.networkModel { grid-column: 1; grid-row: 1 / span 2; aspect-ratio: 1; position: relative; border: 1px solid rgba(255,255,255,.38); background: repeating-linear-gradient(0deg,transparent 0,transparent 21px,rgba(255,255,255,.17) 22px),repeating-linear-gradient(90deg,transparent 0,transparent 21px,rgba(255,255,255,.17) 22px); border-radius: 3px; transform: rotate(-5deg); }
+.networkModel span { position: absolute; border: 2px solid white; }
+.networkShapeA { inset: 15% 54% 35% 14%; }
+.networkShapeB { inset: 15% 15% 59% 46%; }
+.networkShapeC { inset: 50% 14% 12% 49%; }
+.networkShapeD { inset: 69% 59% 12% 14%; }
+.networkBottom { text-align: center; padding: 19px 20px; border-top: 1px solid #ebecf0; color: #9697a0; font-size: 9px; line-height: 1.6; font-weight: 730; letter-spacing: .095em; }
+.networkBottom span { color: var(--red); padding: 0 6px; }
+
+/* Shared text rhythm for the shorter body sections. */
+.sectionHeading { max-width: 1020px; }
+.sectionHeading h2 { margin: 0; font-size: clamp(43px,5vw,77px); line-height: 1.06; font-weight: 750; letter-spacing: -.072em; }
+.sectionHeading h2 span { color: #9e9fa8; }
+.sectionHeading > p:not(:global(.eyebrow)) { max-width: 750px; color: #74767e; font-size: clamp(17px,1.45vw,20px); line-height: 1.68; margin: 27px 0 0; }
+
+/* Clear two-sided connection story; no large dense info cards. */
+.connectionSection { background: #fff; padding: clamp(105px,11vw,180px) 0; }
+.connectionGrid { margin-top: clamp(65px,7vw,110px); display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: clamp(38px,6vw,105px); }
+.connectionColumn { border-top: 2px solid #19191e; padding-top: 30px; }
+.columnMeta { display: flex; justify-content: space-between; color: var(--red); font-size: 10px; font-weight: 780; letter-spacing: .14em; gap: 20px; }
+.connectionColumn h3 { font-size: clamp(31px,3.2vw,49px); line-height: 1.1; letter-spacing: -.063em; max-width: 540px; font-weight: 730; margin: 55px 0 17px; }
+.connectionColumn p { font-size: clamp(16px,1.24vw,18px); line-height: 1.7; color: #787a82; max-width: 540px; margin: 0; }
+.columnTag { color: #9698a0; font-size: 10px; font-weight: 770; letter-spacing: .13em; margin-top: 45px; }
+.columnTag span { color: var(--red); padding-inline: 7px; }
+
+/* Three concise product positions, without repeating the audience story. */
+.productSection { background: #f7f7f9; padding: clamp(110px,11vw,175px) 0; }
+.productGrid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); margin-top: clamp(55px,6vw,90px); gap: 14px; }
+.productCard { display: flex; flex-direction: column; min-height: 350px; padding: clamp(27px,2.7vw,44px); background: white; border: 1px solid #e7e8eb; border-radius: 16px; }
+.productMeta { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; color: var(--red); font-size: 10px; font-weight: 770; letter-spacing: .12em; }
+.productMeta span:last-child { text-align: right; color: #9b9ca3; }
+.productCard h3 { margin: auto 0 19px; font-size: clamp(29px,2.7vw,42px); line-height: 1.1; letter-spacing: -.063em; font-weight: 745; }
+.productCard p { color: #777981; font-size: 15px; line-height: 1.68; margin: 0; max-width: 390px; }
+.productNote { margin: 24px 0 0; font-size: 11px; line-height: 1.65; color: #9899a1; }
+
+/* OpenArcade: strategic destination and clearest CTA on page. */
+.visionSection { color: white; background: #17181d; padding: clamp(120px,12vw,195px) 0; }
+.visionLayout { display: grid; grid-template-columns: minmax(0,1.06fr) minmax(0,.94fr); align-items: center; gap: clamp(50px,7vw,120px); }
+.visionCopy :global(.eyebrow) { color: #f28a95; }
+.visionCopy h2 { margin: 0; max-width: 780px; font-size: clamp(49px,5.2vw,82px); line-height: 1.065; letter-spacing: -.074em; font-weight: 770; }
+.visionCopy h2 span { color: #a9aab3; }
+.visionCopy > p:not(:global(.eyebrow)) { max-width: 620px; color: #b7b8c1; font-size: 17px; line-height: 1.72; margin: 28px 0 0; }
+.visionActions { display: flex; flex-wrap: wrap; align-items: center; gap: 15px; margin-top: 37px; }
+.visionPrimary, .visionSecondary { min-height: 52px; display: inline-flex; align-items: center; justify-content: space-between; gap: 23px; font-size: 14px; font-weight: 740; line-height: 1.35; transition: transform .2s ease,background .2s ease; }
+.visionPrimary:hover,.visionSecondary:hover { transform: translateY(-2px); }
+.visionPrimary { background: #fff; color: #1e1f23; padding: 14px 21px; border-radius: 30px; }
+.visionSecondary { padding: 11px 0; color: #fff; border-bottom: 1px solid #ee8290; }
+.visionCaveat { display: block; max-width: 640px; margin-top: 24px; color: #898c98; font-size: 11px; line-height: 1.65; }
+.visionGraphic { border: 1px solid #42434c; border-radius: 18px; overflow: hidden; background: #23242a; }
+.visionGraphicHeader { display: flex; justify-content: space-between; gap: 14px; padding: 24px 27px; font-size: 10px; font-weight: 770; letter-spacing: .13em; color: #d7d8de; border-bottom: 1px solid #454650; }
+.visionGraphicHeader span { color: #f3949e; }
+.visionStep { display: grid; grid-template-columns: 38px 1fr; gap: 16px; padding: clamp(28px,3vw,43px) 27px; border-bottom: 1px solid #454650; }
+.visionStep > span { color: #ff909c; font-size: 11px; font-weight: 750; }
+.visionStep strong { font-size: clamp(22px,2vw,29px); font-weight: 695; letter-spacing: -.05em; line-height: 1.2; }
+.visionStep p { color: #a8aab5; font-size: 14px; line-height: 1.6; margin: 11px 0 0; }
+.visionGraphicFooter { padding: 20px 27px; font-size: 9px; font-weight: 730; letter-spacing: .1em; color: #888a95; line-height: 1.6; }
+
+/* Compact access links rather than a second set of promotional cards. */
+.accessSection { background: #fff; padding: clamp(105px,11vw,175px) 0; }
+.accessHeading h2 { font-size: clamp(45px,5vw,76px); font-weight: 760; line-height: 1.07; letter-spacing: -.073em; margin: 0; }
+.accessHeading p:not(:global(.eyebrow)) { color: #757780; line-height: 1.65; font-size: 17px; margin: 20px 0 0; }
+.accessList { margin-top: 54px; border-top: 1px solid #dedfe3; }
+.accessRow { padding: 37px 0; border-bottom: 1px solid #dedfe3; display: flex; align-items: center; justify-content: space-between; gap: 40px; }
+.accessRow > div:first-child > span { color: var(--red); font-size: 10px; font-weight: 770; letter-spacing: .13em; }
+.accessRow h3 { margin: 12px 0 0; font-size: clamp(27px,2.8vw,41px); line-height: 1.14; letter-spacing: -.053em; }
+.accessLinks { display: flex; gap: 14px; flex-wrap: wrap; justify-content: end; }
+.accessLinks a { display: inline-flex; justify-content: center; align-items: center; min-height: 48px; padding: 12px 19px; border-radius: 25px; font-size: 13px; font-weight: 750; white-space: nowrap; border: 1px solid #dedfe4; background: #fff; transition: background .2s ease,transform .2s ease; }
+.accessLinks a:first-child { background: var(--red); color: #fff; border-color: var(--red); }
+.accessLinks a:hover { transform: translateY(-2px); background: #f3f3f5; }
+.accessLinks a:first-child:hover { background: var(--red-dark); }
+
+/* Reveals are progressive enhancement: by default all content is visible. */
+.aboutPage [data-about-reveal] { transition: opacity .72s ease,transform .72s cubic-bezier(.2,.8,.2,1); }
+.revealPending { opacity: 0 !important; transform: translateY(24px); }
+@keyframes aboutEnter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 1100px) {
+  .heroLayout { grid-template-columns: minmax(0,1fr) minmax(0,.9fr); gap: 43px; }
+  .heroCopy h1 { font-size: clamp(51px,5.9vw,80px); }
+  .networkContent { padding: 23px; }
+  .productGrid { gap: 12px; }
+  .productCard { padding: 28px; }
+  .visionLayout { gap: 45px; }
+}
+@media (max-width: 900px) {
+  .heroLayout { min-height: auto; grid-template-columns: 1fr; gap: 70px; padding-block: 90px 110px; }
+  .heroCopy h1 { max-width: 880px; font-size: clamp(54px,8.6vw,85px); }
+  .heroLead { max-width: 750px; }
+  .network { width: min(700px,100%); margin-inline: auto; }
+  .connectionGrid { gap: 38px; }
+  .productGrid { grid-template-columns: 1fr; }
+  .productCard { min-height: 215px; }
+  .productCard h3 { margin-top: 45px; }
+  .visionLayout { grid-template-columns: 1fr; }
+  .visionGraphic { max-width: 750px; }
+}
+@media (max-width: 680px) {
+  .heroLayout { padding-top: 74px; padding-bottom: 82px; gap: 44px; }
+  .heroCopy h1 { font-size: clamp(46px,11.5vw,64px); }
+  .heroLead { margin-top: 24px; font-size: 17px; }
+  .heroActions { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .heroActions :global(.button) { width: 100%; }
+  .network { border-radius: 14px; }
+  .networkTop { padding: 17px; font-size: 8px; }
+  .networkContent { padding: 18px; }
+  .networkCore { grid-template-columns: 90px 1fr; gap: 13px; padding: 16px; }
+  .networkCore strong { font-size: 21px; }
+  .networkSide { padding: 17px 19px; }
+  .networkSide strong { font-size: 25px; }
+  .networkBottom { padding: 17px; font-size: 8px; }
+  .connectionSection,.productSection,.visionSection,.accessSection { padding-block: 84px; }
+  .sectionHeading h2,.visionCopy h2,.accessHeading h2 { font-size: clamp(40px,10vw,57px); }
+  .sectionHeading > p:not(:global(.eyebrow)) { font-size: 16px; }
+  .connectionGrid { grid-template-columns: 1fr; margin-top: 46px; gap: 56px; }
+  .connectionColumn h3 { font-size: 35px; margin-top: 36px; }
+  .connectionColumn p { font-size: 16px; }
+  .columnTag { margin-top: 25px; }
+  .productGrid { margin-top: 44px; }
+  .productCard { min-height: 230px; }
+  .productCard h3 { font-size: 35px; }
+  .visionCopy > p:not(:global(.eyebrow)) { font-size: 16px; }
+  .visionActions { flex-direction: column; align-items: stretch; }
+  .visionPrimary { width: 100%; }
+  .visionSecondary { align-self: flex-start; }
+  .visionStep { padding: 27px 19px; }
+  .visionGraphicHeader,.visionGraphicFooter { padding-inline: 19px; }
+  .accessRow { flex-direction: column; align-items: stretch; gap: 24px; }
+  .accessLinks { justify-content: start; }
+  .accessLinks a { flex: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .heroCopy,.network { animation: none; }
+  .aboutPage [data-about-reveal] { transition: none !important; opacity: 1 !important; transform: none !important; }
+  .revealPending { opacity: 1 !important; transform: none !important; }
+  .heroTextLink,.visionPrimary,.visionSecondary,.accessLinks a { transition: none; }
+  .visionPrimary:hover,.visionSecondary:hover,.accessLinks a:hover { transform: none; }
+}
