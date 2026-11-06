@@ -3,6 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import styles from "./SiteHeader.module.css";
+
+const PROJECT_URL = "https://arcalogixdashboard.com/general-submit-project";
+const SIGN_IN_URL = "https://arcalogixdashboard.com/login";
 
 const links = [
   { href: "#platform", label: "Platform" },
@@ -12,6 +16,7 @@ const links = [
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <header className="site-header">
       <div className="header-inner page-shell">
@@ -20,12 +25,53 @@ export default function SiteHeader() {
           <span className="brand-separator" aria-hidden="true" />
           <span className="brand-descriptor">SPATIAL INTELLIGENCE PLATFORM</span>
         </Link>
+
         <nav className={`header-nav ${menuOpen ? "nav-open" : ""}`} aria-label="Primary navigation" id="primary-navigation">
-          {links.map((link) => <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>{link.label}</a>)}
-          <a className="button button-primary mobile-nav-cta" href="https://arcalogixdashboard.com/general-submit-project" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Submit a new project <span aria-hidden="true">↗</span></a>
+          {links.map((link) => (
+            <a key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
+              {link.label}
+            </a>
+          ))}
+          <a
+            className="button button-primary mobile-nav-cta"
+            href={PROJECT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
+          >
+            Submit a new project <span aria-hidden="true">↗</span>
+          </a>
+          <a
+            className={styles.mobileSignIn}
+            href={SIGN_IN_URL}
+            onClick={() => setMenuOpen(false)}
+          >
+            Sign in
+          </a>
         </nav>
-        <a className="button button-primary header-cta" href="https://arcalogixdashboard.com/general-submit-project" target="_blank" rel="noopener noreferrer">Submit a new project <span aria-hidden="true">↗</span></a>
-        <button type="button" className={`menu-toggle ${menuOpen ? "menu-active" : ""}`} aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={menuOpen ? "Close navigation" : "Open navigation"} onClick={() => setMenuOpen((value) => !value)}>
+
+        <div className={styles.headerActions}>
+          <a
+            className="button button-primary header-cta"
+            href={PROJECT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Submit a new project <span aria-hidden="true">↗</span>
+          </a>
+          <a className={`${styles.signIn} button button-secondary`} href={SIGN_IN_URL}>
+            Sign in
+          </a>
+        </div>
+
+        <button
+          type="button"
+          className={`menu-toggle ${menuOpen ? "menu-active" : ""}`}
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
+          aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+          onClick={() => setMenuOpen((value) => !value)}
+        >
           <span /><span />
         </button>
       </div>

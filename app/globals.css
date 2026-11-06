@@ -460,8 +460,8 @@ img { max-width: 100%; }
   height: 100%;
   object-fit: contain;
   object-position: center center;
-  opacity: .84;
-  filter: saturate(.72) contrast(1.10) brightness(1.015);
+  opacity: 1;
+  filter: saturate(.98) contrast(1.09) brightness(.985);
 }
 .hero-video-wash {
   position: absolute;
@@ -469,10 +469,10 @@ img { max-width: 100%; }
   inset: 0;
   pointer-events: none;
   background: linear-gradient(to bottom,
-    rgba(255,255,255,.21) 0%,
-    rgba(255,255,255,.30) 30%,
-    rgba(255,255,255,.52) 46%,
-    rgba(255,255,255,.91) 63%,
+    rgba(255,255,255,.04) 0%,
+    rgba(255,255,255,.12) 30%,
+    rgba(255,255,255,.26) 46%,
+    rgba(255,255,255,.80) 63%,
     #fff 76%);
 }
 .hero-ghost { z-index: 0; color: rgba(199,25,42,.027); }
@@ -532,7 +532,7 @@ img { max-width: 100%; }
   .service-story-panel .service-price-figure strong { font-size: 45px; }
   .service-story-panel .service-price-figure span { font-size: 14px; }
   .hero-video-layer { top: 16px; width: 160vw; height: 580px; }
-  .hero-backdrop-video { object-position: center center; opacity: .65; }
+  .hero-backdrop-video { object-position: center center; opacity: 1; }
 }
 /* Use a static poster and fully accessible service cards for reduced motion. */
 @media (prefers-reduced-motion: reduce) {

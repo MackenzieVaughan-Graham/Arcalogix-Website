@@ -1,30 +1,17 @@
-# Arcalogix: centred hero video + faster service scroll
+# Arcalogix - Add Sign in to Header
 
-This update replaces only **two files** in your existing Arcalogix Next.js website:
+Copy both files in `components/` into the same folder in your Arcalogix Next.js project:
+- `components/SiteHeader.tsx` (replace existing)
+- `components/SiteHeader.module.css` (new file)
 
-1. `app/globals.css`
-2. `components/ServicesScrollScene.tsx`
+Desktop/tablet: an outlined `Sign in` button appears immediately to the right of the red `Submit a new project` button.
+Phone widths: both actions remain accessible inside the existing hamburger menu.
 
-The video file itself is unchanged. You do not have to upload or re-compress it again.
+Links:
+- Submit a new project: https://arcalogixdashboard.com/general-submit-project
+- Sign in: https://arcalogixdashboard.com/login
 
-## What's fixed
+This is a header-only update. It does not replace `app/globals.css`, the recently enhanced video, the services animation, pricing, or Supabase integration.
 
-- The 16:9 video is now centred behind the heading area with `object-fit: contain`, not stretched/cropped across the whole page. The background is feathered into the white page, including at mobile widths.
-- Service section scrolling is shorter (`168svh` instead of `370svh`). Each service changes in a quick ~0.34s crossfade, rather than gradually fading a tiny amount per wheel step. Natural scrolling is maintained.
-- All four prices, background images, CTA destinations, contact form and Supabase integration are preserved.
-
-## Install
-
-Extract into the root of your existing Arcalogix VS Code project, merge `app/` and `components/`, and replace the two files.
-
-```sh
-npm run dev
-npm run build
-git add app/globals.css components/ServicesScrollScene.tsx
-git commit -m "Center hero video and speed up service transitions"
-git push origin main
-```
-
-If the video still looks unchanged, hard-refresh the browser (Ctrl+Shift+R) and verify that Vercel deployed the latest commit.
-
-This release has source syntax and archive verification; the sandbox browser screenshot was unavailable. Please check the final viewport alignment locally.
+Preview: `npm run dev`
+Deploy: `git add components/SiteHeader.tsx components/SiteHeader.module.css && git commit -m "Add dashboard sign-in link to header" && git push origin main`

@@ -1,0 +1,45 @@
+/* Small, scoped addition: keep both account actions together on desktop. */
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.signIn {
+  padding: 13px 20px;
+  border-color: #dedee2;
+}
+
+/* The mobile menu remains the single navigation surface on small phones. */
+.mobileSignIn {
+  display: none;
+}
+
+@media (max-width: 1150px) {
+  .headerActions {
+    gap: 9px;
+  }
+
+  .signIn {
+    padding: 12px 15px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 900px) {
+  .headerActions {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 680px) {
+  .headerActions {
+    display: none;
+  }
+
+  .mobileSignIn {
+    display: flex;
+    align-items: center;
+  }
+}
