@@ -3,57 +3,8 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import PlatformJourney from "@/components/PlatformJourney";
 import { ContactButton } from "@/components/ContactProvider";
-
-const services = [
-  {
-    number: "01",
-    label: "PLANNING",
-    title: "Test fitting",
-    description: "Understand how a potential or existing space fits your requirements before moving forward. Our design team applies your workplace standards to each test fit.",
-    priceQualifier: "PER PROJECT",
-    price: "$0.15",
-    priceUnit: "/ sq ft",
-    priceDetail: "Includes 2 free iterations per project",
-    items: ["Standards-based test fitting", "Space planning and layout options", "Two included iterations"],
-    interest: "Test fits and planning",
-  },
-  {
-    number: "02",
-    label: "DELIVERY",
-    title: "Design & permitting support",
-    description: "Move an approved layout forward with professional design services, drawing coordination and permitting support, with local professional involvement where required.",
-    priceQualifier: "PROFESSIONAL SERVICES FROM",
-    price: "$75",
-    priceUnit: "/ hour",
-    priceDetail: "Starting rate for professional services",
-    items: ["Design development", "Drawing and document coordination", "Permitting support"],
-    interest: "Design and permitting",
-  },
-  {
-    number: "03",
-    label: "INTELLIGENCE",
-    title: "Portfolio intelligence",
-    description: "Keep your Spatial Intelligence Models (SIMs) active in one platform so teams can revisit spaces, compare options and use a consistent spatial record across the portfolio.",
-    priceQualifier: "LIVE SIM HOSTING",
-    price: "$0.01",
-    priceUnit: "/ sq ft / month",
-    priceDetail: "For each SIM kept live on the platform",
-    items: ["Persistent spatial model records", "Portfolio-wide planning context", "Standards and scenario comparison"],
-    interest: "Portfolio intelligence",
-  },
-  {
-    number: "04",
-    label: "OPERATIONS",
-    title: "Digital twins, IoT & asset management",
-    description: "Extend the spatial model into occupied operations with optional connected device data and asset information, designed to support space management over time.",
-    priceQualifier: "CONNECTED OPERATIONS FROM",
-    price: "$10",
-    priceUnit: "/ device / month",
-    priceDetail: "Starting price per connected device",
-    items: ["Digital twin foundations", "IoT occupancy and environmental inputs", "Space and asset context"],
-    interest: "Digital twins and IoT",
-  },
-];
+import ServicesScrollScene from "@/components/ServicesScrollScene";
+import ScrollEnhancer from "@/components/ScrollEnhancer";
 
 export default function Home() {
   return (
@@ -62,6 +13,12 @@ export default function Home() {
       <main>
         {/* PRIMARY POSITIONING */}
         <section className="hero-section" aria-labelledby="hero-title">
+          <div className="hero-video-layer" aria-hidden="true">
+            <video className="hero-backdrop-video" autoPlay muted loop playsInline preload="metadata" poster="/images/hero-animation-poster.webp" disablePictureInPicture>
+              <source src="/video/arcalogix-spatial-hero.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div className="hero-video-wash" aria-hidden="true" />
           <div className="hero-ghost" aria-hidden="true">PORTFOLIO</div>
           <div className="page-shell hero-inner">
             <p className="eyebrow hero-kicker"><span className="red-dot" /> BUILT FOR ENTERPRISE REAL ESTATE</p>
@@ -112,40 +69,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* PLATFORM AND SERVICES — position the value proposition on the left, pricing on the right */}
-        <section className="services-section section-pad" id="services" aria-labelledby="services-heading">
-          <div className="page-shell services-layout">
-            <div className="services-intro">
-              <p className="eyebrow">03 / PLATFORM + SERVICES</p>
-              <h2 id="services-heading">Software for the decisions.<br /><span>People for the delivery.</span></h2>
-              <p className="section-lede">One connected spatial platform, backed by our internal design team. Standardize planning across locations, deliver your projects, and keep the information useful long after move-in.</p>
-            </div>
-            <div className="services-list">
-              {services.map((service) => (
-                <article className="service-row" key={service.number}>
-                  <div className="service-row-top">
-                    <span>{service.number} / {service.label}</span>
-                    <span className="service-row-icon" aria-hidden="true">↗</span>
-                  </div>
-                  <h3>{service.title}</h3>
-                  <p className="service-row-description">{service.description}</p>
-                  <div className="service-price" aria-label={`${service.priceQualifier}: ${service.price} ${service.priceUnit}`}>
-                    <span className="service-price-qualifier">{service.priceQualifier}</span>
-                    <div className="service-price-figure"><strong>{service.price}</strong><span>{service.priceUnit}</span></div>
-                    <span className="service-price-detail">{service.priceDetail}</span>
-                  </div>
-                  <ul className="service-includes">
-                    {service.items.map((item) => <li key={item}>{item}</li>)}
-                  </ul>
-                  <ContactButton className="service-link" interest={service.interest}>
-                    Discuss this service <span aria-hidden="true">↗</span>
-                  </ContactButton>
-                </article>
-              ))}
-              <p className="services-note">Final scope, any applicable third-party costs, professional sign-off and service availability depend on the project and jurisdiction. Digital twin and IoT integrations are an expanding part of the offering.</p>
-            </div>
-          </div>
-        </section>
+        {/* SERVICE PRICING — sticky, scroll-linked crossfades on desktop */}
+        <ServicesScrollScene />
 
         {/* GLOBAL SERVICE DELIVERY */}
         <section className="delivery-section" aria-labelledby="delivery-heading">
@@ -179,6 +104,7 @@ export default function Home() {
           <div className="final-cta-ghost" aria-hidden="true">NEXT.</div>
           <div className="page-shell final-cta-inner"><p className="eyebrow">START WITH ONE LOCATION. THINK PORTFOLIO-WIDE.</p><h2 id="final-heading">Make your next space<br /><span>a better decision.</span></h2><p>Tell us what you&apos;re planning. We&apos;ll help you identify the right place to begin—with a test fit, a spatial model, or a broader portfolio standard.</p><ContactButton className="button button-primary button-large">Talk to the Arcalogix team <span aria-hidden="true">↗</span></ContactButton></div>
         </section>
+        <ScrollEnhancer />
       </main>
       <footer className="site-footer"><div className="page-shell footer-inner"><div className="footer-top"><Link href="/" aria-label="Arcalogix home"><Image src="/images/arcalogix-logo.webp" alt="Arcalogix" width={149} height={38} /></Link><p>Spatial intelligence for better real estate decisions.</p></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Arcalogix. All rights reserved.</span><div><a href="#platform">Platform</a><a href="#services">Services</a><a href="mailto:sales@arcalogix.com">Contact</a><Link href="/privacy">Privacy</Link></div></div></div></footer>
     </>

@@ -432,3 +432,83 @@ img { max-width: 100%; }
   html { scroll-behavior: auto; }
   *, *:before, *:after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+
+/* === Release: full-bleed architectural hero video, seamlessly blended === */
+.hero-section { background: #fff; }
+.hero-video-layer { position: absolute; z-index: -2; inset: 0; pointer-events: none; overflow: hidden; background: #fff url('/images/hero-animation-poster.webp') center top / cover no-repeat; }
+.hero-backdrop-video { width: 100%; height: 100%; object-fit: cover; object-position: center 26%; opacity: .82; filter: saturate(.64) contrast(1.13) brightness(1.03); display: block; -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 53%, transparent 94%); mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 53%, transparent 94%); }
+.hero-video-wash { position: absolute; z-index: -1; inset: 0; pointer-events: none; background: linear-gradient(to bottom, rgba(255,255,255,.39) 0%, rgba(255,255,255,.52) 26%, rgba(255,255,255,.72) 49%, #fff 84%); }
+.hero-ghost { z-index: 0; color: rgba(199,25,42,.027); }
+.hero-inner { z-index: 1; }
+.hero-inner h1 { text-shadow: 0 2px 25px rgba(255,255,255,.9); }
+.hero-lede { text-shadow: 0 1px 10px rgba(255,255,255,.95); }
+/* No video control panel: playback is native, muted, inline, looping. */
+
+/* === Platform + Services: scroll-linked crossfade, no sideways slide === */
+.service-story { position: relative; height: 370svh; background: linear-gradient(180deg,#fff 0%,#fbfbfc 50%,#fff 100%); }
+.service-story-sticky { position: sticky; top: var(--header-height); height: calc(100svh - var(--header-height)); display: flex; flex-direction: column; justify-content: center; gap: clamp(10px, 1.2vh, 20px); }
+.service-story-grid { display: grid; grid-template-columns: minmax(0,.87fr) minmax(0,1.13fr); gap: clamp(45px,6vw,100px); align-items: center; min-height: 0; flex: 1; }
+.service-story-intro { min-width: 0; }
+.service-story-intro h2 { margin: 0; font-size: clamp(44px,4.4vw,72px); font-weight: 760; line-height: 1.05; letter-spacing: -.066em; }
+.service-story-intro h2 span { color: #a2a3a9; }
+.service-story-intro .section-lede { margin-top: 28px; font-size: clamp(16px,1.45vw,20px); }
+.service-story-track { display: flex; gap: 13px; margin-top: 36px; }
+.service-story-track span { display: inline-flex; justify-content: center; align-items: center; height: 33px; width: 44px; border: 1px solid #e4e4e7; border-radius: 40px; color: #b1b2b8; font-size: 11px; font-weight: 720; transition: color .25s, background .25s, border-color .25s; }
+.service-story-track span.is-current { background: var(--red); color: white; border-color: var(--red); }
+.service-story-viewport { min-width: 0; position: relative; isolation: isolate; height: min(620px, calc(100svh - var(--header-height) - 96px)); background: #fcfcfd; border: 1px solid #ececef; border-radius: 20px; overflow: hidden; }
+.service-story-backgrounds { position: absolute; inset: 0; pointer-events: none; z-index: -1; }
+.service-story-background { position: absolute; inset: 0; background-position: center; background-size: cover; background-repeat: no-repeat; filter: grayscale(.4) contrast(.94); -webkit-mask-image: linear-gradient(90deg,transparent 0%,#000 38%); mask-image: linear-gradient(90deg,transparent 0%,#000 38%); }
+.service-story-viewport:after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg,rgba(255,255,255,.73),rgba(255,255,255,.53) 55%,rgba(255,255,255,.70)); }
+.service-story-panel { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: clamp(24px,2.7vw,44px); color: var(--ink); }
+.service-story-panel .service-row-top { margin-bottom: 17px; }
+.service-story-panel h3 { margin: 0 0 13px; font-size: clamp(30px,2.5vw,40px); font-weight: 750; line-height: 1.1; letter-spacing: -.055em; }
+.service-story-panel .service-row-description { font-size: 15px; line-height: 1.6; }
+.service-story-panel .service-price { margin: 20px 0 20px; padding: 17px 22px; background: rgba(255,255,255,.72); backdrop-filter: blur(8px); }
+.service-story-panel .service-price-figure strong { font-size: clamp(35px,3vw,48px); }
+.service-story-panel .service-includes { gap: 7px; }
+.service-story-panel .service-includes li { font-size: 13px; }
+.service-story-panel .service-link { align-self: start; margin-top: 18px; }
+.service-panel-mobile-image { display: none; }
+.service-story-note { margin: 0 auto; padding-bottom: 16px; font-size: 11px; line-height: 1.55; color: #8d9098; }
+/* Small desktop heights and mobile: stack accessible cards instead of clipping sticky content */
+@media (max-width: 950px), (max-height: 630px) {
+  .service-story { height: auto; padding: 100px 0; }
+  .service-story-sticky { position: static; height: auto; display: block; }
+  .service-story-grid { display: block; }
+  .service-story-intro { margin-bottom: 45px; }
+  .service-story-intro h2 { font-size: clamp(42px,7vw,67px); }
+  .service-story-track { display: none; }
+  .service-story-viewport { height: auto; border: 0; background: transparent; border-radius: 0; overflow: visible; display: grid; gap: 22px; }
+  .service-story-backgrounds, .service-story-viewport:after { display: none; }
+  .service-story-panel { position: relative; opacity: 1 !important; pointer-events: auto !important; background: #fafafb; border: 1px solid #ebebee; border-radius: 17px; overflow: hidden; padding: clamp(25px,4.5vw,43px); }
+  .service-panel-mobile-image { display: block; position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .08; background-size: cover; background-position: center; }
+  .service-story-panel > :not(.service-panel-mobile-image) { position: relative; z-index: 1; }
+  .service-story-note { margin-top: 24px; padding-bottom: 0; }
+}
+@media (max-width: 580px) {
+  .service-story { padding: 90px 0; }
+  .service-story-intro h2 { font-size: clamp(39px,10vw,53px); }
+  .service-story-panel h3 { font-size: clamp(31px,8vw,39px); }
+  .service-story-panel .service-price { padding: 17px; }
+  .service-story-panel .service-price-figure strong { font-size: 45px; }
+  .service-story-panel .service-price-figure span { font-size: 14px; }
+  .hero-backdrop-video { object-position: 44% 18%; opacity: .65; }
+}
+/* Use a static poster and fully accessible service cards for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-backdrop-video { display: none; }
+  .service-story { height: auto; padding: 90px 0; }
+  .service-story-sticky { position: static; height: auto; display: block; }
+  .service-story-grid { display: block; }
+  .service-story-intro { margin-bottom: 40px; }
+  .service-story-track { display: none; }
+  .service-story-viewport { height: auto; display: grid; gap: 22px; border: 0; background: transparent; overflow: visible; }
+  .service-story-backgrounds, .service-story-viewport:after { display: none; }
+  .service-story-panel { position: relative; opacity: 1 !important; pointer-events: auto !important; background: #fafafb; border: 1px solid #ebebee; border-radius: 17px; }
+  .service-story-note { margin-top: 24px; }
+}
+/* General scroll polish: modest entrance reveals, not locked or hijacked scrolling. */
+.scroll-motion-ready { opacity: 0; transform: translate3d(0,18px,0); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.8,.2,1); }
+.scroll-motion-ready.scroll-motion-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .scroll-motion-ready { opacity: 1 !important; transform: none !important; } }

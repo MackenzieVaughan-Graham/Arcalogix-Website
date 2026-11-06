@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 650" fill="none">
+<rect width="960" height="650" fill="#f8f8fa"/>
+<g stroke="#9ca0aa" stroke-width="3" opacity=".75"><rect x="136" y="120" width="686" height="410" rx="12"/><path d="M136 282h686M136 400h686M333 120v410M512 120v410M684 120v410"/><path d="M196 120v162M333 342h179M512 400v130M684 282v118"/></g>
+<g fill="#f1f2f4" stroke="#c0c1c7" stroke-width="2"><rect x="160" y="146" width="137" height="103" rx="4"/><rect x="365" y="150" width="120" height="100" rx="4"/><rect x="536" y="154" width="124" height="100" rx="4"/><rect x="712" y="318" width="80" height="60" rx="4"/><rect x="365" y="425" width="116" height="72" rx="4"/></g>
+<g stroke="#c7192a" stroke-width="3.5" stroke-dasharray="8 9" opacity=".65"><path d="M245 196L423 201L592 195L755 345"/><path d="M423 201L423 463L585 456"/><path d="M423 201L741 456"/></g>
+<g fill="#fff" stroke="#c7192a" stroke-width="5"><circle cx="245" cy="196" r="15"/><circle cx="423" cy="201" r="15"/><circle cx="592" cy="195" r="15"/><circle cx="755" cy="345" r="15"/><circle cx="423" cy="463" r="15"/><circle cx="741" cy="456" r="15"/></g>
+<g fill="#c7192a"><circle cx="245" cy="196" r="5"/><circle cx="423" cy="201" r="5"/><circle cx="592" cy="195" r="5"/><circle cx="755" cy="345" r="5"/><circle cx="423" cy="463" r="5"/><circle cx="741" cy="456" r="5"/></g>
+<g fill="#6b6e76" font-family="Arial,sans-serif" font-size="19" font-weight="600"><text x="142" y="85">ILLUSTRATIVE SPATIAL DEVICE NETWORK</text><text x="660" y="570">SPACE + ASSET CONTEXT</text></g>
+</svg>
