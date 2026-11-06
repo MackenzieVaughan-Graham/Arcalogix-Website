@@ -106,9 +106,6 @@ export default function ServicesScrollScene() {
             <p className="eyebrow">03 / PLATFORM + SERVICES</p>
             <h2 id="services-heading">Software for the decisions.<br /><span>People for the delivery.</span></h2>
             <p className="section-lede">One connected spatial platform, backed by our internal design team. Standardize planning across locations, deliver your projects, and keep the information useful long after move-in.</p>
-            <div className="service-story-track" aria-label="Four connected services">
-              {services.map((service, index) => <span key={service.number} className={activeIndex === index ? "is-current" : ""}>{service.number}</span>)}
-            </div>
           </div>
           <div className="service-story-viewport">
             <div className="service-story-backgrounds" aria-hidden="true">

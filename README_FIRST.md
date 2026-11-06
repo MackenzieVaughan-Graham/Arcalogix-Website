@@ -1,19 +1,22 @@
-# Arcalogix – Hero Cleanup & Spacing Refinement
+# Arcalogix platform scroll and services cleanup
 
-Replace ONLY these files in your existing Arcalogix website:
+## Recommended installation
 
-- app/page.tsx
-- app/globals.css
+Copy only these three files over your existing Arcalogix Next.js project:
 
-CHANGES
-- Removes the decorative oversized PORTFOLIO watermark behind the hero title.
-- Makes the architectural hero video slightly darker and more defined by adjusting its CSS filter.
-- Reduces white wash over the video while retaining the soft fading into the white background.
-- Reduces large vertical gaps through the website by approximately 15–20% without changing content or the quick service scroll transitions.
+1. `components/PlatformJourney.tsx`
+2. `components/ServicesScrollScene.tsx`
+3. `app/globals.css`
 
-This drop-in does not touch the video asset, service components, sign-in header, pricing, or Supabase enquiry API.
+Test: `npm run dev`, scroll through **01 / The Platform** and **03 / Platform + Services**.
+Production check: `npm run build`.
 
-For local verification: npm run dev and npm run build.
-Then: git add app/page.tsx app/globals.css && git commit -m "Refine hero video and section spacing" && git push origin main
+Deploy:
 
-The full-source ZIP is also available; it includes the latest available video-contrast and header sign-in updates.
+```bash
+git add components/PlatformJourney.tsx components/ServicesScrollScene.tsx app/globals.css
+git commit -m "Stabilize platform story and simplify service indicators"
+git push origin main
+```
+
+The full-source archive is a reconstructed local copy; it has not been fetched directly from the live GitHub repository.

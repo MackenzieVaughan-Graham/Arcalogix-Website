@@ -57,30 +57,108 @@ function IllustrativeIntelligence() {
   );
 }
 
+/**
+ * One reading position for both the left-side title and the right-side visual.
+ * A preview changes only after its corresponding title reaches the reading
+ * position. On desktop, natural scrolling settles to the nearest title after
+ * a short pause; there is no wheel interception or scroll lock.
+ */
 export default function PlatformJourney() {
   const [active, setActive] = useState(0);
+  const sectionRef = useRef<HTMLElement>(null);
   const stepRefs = useRef<Array<HTMLDivElement | null>>([]);
 
   useEffect(() => {
-    if (!window.IntersectionObserver) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible.length > 0) {
-          const index = Number((visible[0].target as HTMLElement).dataset.index);
-          if (!Number.isNaN(index)) setActive(index);
-        }
-      },
-      { threshold: [0.2, 0.5, 0.7], rootMargin: "-15% 0px -20% 0px" }
-    );
-    stepRefs.current.forEach((el) => el && observer.observe(el));
-    return () => observer.disconnect();
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const compact = window.matchMedia("(max-width: 680px)");
+    const touch = window.matchMedia("(pointer: coarse)");
+    let frame = 0;
+    let settleTimer = 0;
+    let unlockTimer = 0;
+    let snapping = false;
+
+    // Center of the usable viewport (excluding the sticky navigation bar).
+    const readingLine = () => {
+      const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-height")) || 88;
+      return compact.matches
+        ? header + (window.innerHeight - header) * 0.73
+        : header + (window.innerHeight - header) * 0.49;
+    };
+
+    const positions = () => stepRefs.current.map((element, index) => {
+      const heading = element?.querySelector("h3");
+      if (!heading) return null;
+      const rect = heading.getBoundingClientRect();
+      return { index, center: rect.top + rect.height / 2 };
+    }).filter((item): item is { index: number; center: number } => item !== null);
+
+    const closest = () => {
+      const line = readingLine();
+      const options = positions();
+      const item = options.reduce<{ index: number; center: number } | null>((best, next) => {
+        return !best || Math.abs(next.center - line) < Math.abs(best.center - line) ? next : best;
+      }, null);
+      return { item, line, options };
+    };
+
+    const update = () => {
+      frame = 0;
+      const { item, line } = closest();
+      if (!item) return;
+      // Never change the visual early: wait for the title to reach the same
+      // alignment position used by the desktop scroll-settle interaction.
+      const switchDistance = compact.matches ? window.innerHeight * 0.16 : Math.max(22, window.innerHeight * 0.032);
+      if (Math.abs(item.center - line) <= switchDistance) {
+        setActive((current) => current === item.index ? current : item.index);
+      }
+    };
+
+    const settle = () => {
+      if (snapping || compact.matches || touch.matches || reducedMotion.matches) return;
+      const { item, line, options } = closest();
+      if (!item || options.length !== steps.length || !sectionRef.current) return;
+      const bounds = sectionRef.current.getBoundingClientRect();
+      const first = options[0].center;
+      const last = options[options.length - 1].center;
+      // Only settle while reading the steps. Don't pull the user back into
+      // the section while entering from above or leaving for the next section.
+      if (bounds.top >= line || bounds.bottom <= line ||
+          first > line + window.innerHeight * 0.24 ||
+          last < line - window.innerHeight * 0.24) return;
+      const offset = item.center - line;
+      if (Math.abs(offset) < 9 || Math.abs(offset) > window.innerHeight * 0.46) return;
+
+      snapping = true;
+      window.scrollTo({ top: window.scrollY + offset, behavior: "smooth" });
+      window.clearTimeout(unlockTimer);
+      unlockTimer = window.setTimeout(() => {
+        snapping = false;
+        update();
+      }, 560);
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+      window.clearTimeout(settleTimer);
+      if (!snapping && !compact.matches && !touch.matches && !reducedMotion.matches) {
+        settleTimer = window.setTimeout(settle, 220);
+      }
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+      window.clearTimeout(settleTimer);
+      window.clearTimeout(unlockTimer);
+    };
   }, []);
 
   return (
-    <section id="platform" className="journey-section section-pad" aria-labelledby="journey-heading">
+    <section id="platform" ref={sectionRef} className="journey-section section-pad" aria-labelledby="journey-heading">
       <div className="page-shell">
         <div className="section-heading journey-heading">
           <p className="eyebrow">01 / THE PLATFORM</p>
@@ -95,6 +173,7 @@ export default function PlatformJourney() {
                 className={`journey-step ${active === index ? "journey-step-active" : ""}`}
                 ref={(el) => { stepRefs.current[index] = el; }}
                 data-index={index}
+                aria-current={active === index ? "step" : undefined}
               >
                 <span className="journey-num">{step.number} / {step.label}</span>
                 <h3>{step.title}</h3>
