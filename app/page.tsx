@@ -19,7 +19,6 @@ export default function Home() {
             </video>
           </div>
           <div className="hero-video-wash" aria-hidden="true" />
-          <div className="hero-ghost" aria-hidden="true">PORTFOLIO</div>
           <div className="page-shell hero-inner">
             <p className="eyebrow hero-kicker"><span className="red-dot" /> BUILT FOR ENTERPRISE REAL ESTATE</p>
             <h1 id="hero-title">Every space.<br /><span>One strategy.</span></h1>

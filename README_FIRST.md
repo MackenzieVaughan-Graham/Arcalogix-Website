@@ -1,17 +1,19 @@
-# Arcalogix - Add Sign in to Header
+# Arcalogix – Hero Cleanup & Spacing Refinement
 
-Copy both files in `components/` into the same folder in your Arcalogix Next.js project:
-- `components/SiteHeader.tsx` (replace existing)
-- `components/SiteHeader.module.css` (new file)
+Replace ONLY these files in your existing Arcalogix website:
 
-Desktop/tablet: an outlined `Sign in` button appears immediately to the right of the red `Submit a new project` button.
-Phone widths: both actions remain accessible inside the existing hamburger menu.
+- app/page.tsx
+- app/globals.css
 
-Links:
-- Submit a new project: https://arcalogixdashboard.com/general-submit-project
-- Sign in: https://arcalogixdashboard.com/login
+CHANGES
+- Removes the decorative oversized PORTFOLIO watermark behind the hero title.
+- Makes the architectural hero video slightly darker and more defined by adjusting its CSS filter.
+- Reduces white wash over the video while retaining the soft fading into the white background.
+- Reduces large vertical gaps through the website by approximately 15–20% without changing content or the quick service scroll transitions.
 
-This is a header-only update. It does not replace `app/globals.css`, the recently enhanced video, the services animation, pricing, or Supabase integration.
+This drop-in does not touch the video asset, service components, sign-in header, pricing, or Supabase enquiry API.
 
-Preview: `npm run dev`
-Deploy: `git add components/SiteHeader.tsx components/SiteHeader.module.css && git commit -m "Add dashboard sign-in link to header" && git push origin main`
+For local verification: npm run dev and npm run build.
+Then: git add app/page.tsx app/globals.css && git commit -m "Refine hero video and section spacing" && git push origin main
+
+The full-source ZIP is also available; it includes the latest available video-contrast and header sign-in updates.
