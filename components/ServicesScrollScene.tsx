@@ -52,7 +52,7 @@ const clamp = (value: number) => Math.max(0, Math.min(1, value));
 
 export default function ServicesScrollScene() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [position, setPosition] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(0);
   const [stacked, setStacked] = useState(false);
 
   useEffect(() => {
@@ -70,7 +70,7 @@ export default function ServicesScrollScene() {
 
   useEffect(() => {
     if (stacked || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setPosition(0);
+      setActiveIndex(0);
       return;
     }
     let frame = 0;
@@ -81,7 +81,9 @@ export default function ServicesScrollScene() {
       const bounds = section.getBoundingClientRect();
       const distance = Math.max(1, bounds.height - window.innerHeight);
       const progress = clamp(-bounds.top / distance);
-      setPosition(progress * (services.length - 1));
+      // Each quarter of the short scene selects a service. Content crossfades
+      // quickly (CSS), rather than crawling fractionally with each wheel tick.
+      setActiveIndex(Math.min(services.length - 1, Math.floor(progress * services.length)));
     };
     const onScroll = () => {
       if (!frame) frame = window.requestAnimationFrame(update);
@@ -96,7 +98,6 @@ export default function ServicesScrollScene() {
     };
   }, [stacked]);
 
-  const activeIndex = Math.max(0, Math.min(services.length - 1, Math.round(position)));
   return (
     <section id="services" ref={sectionRef} className="service-story" aria-labelledby="services-heading">
       <div className="service-story-sticky">
@@ -112,17 +113,16 @@ export default function ServicesScrollScene() {
           <div className="service-story-viewport">
             <div className="service-story-backgrounds" aria-hidden="true">
               {services.map((service, index) => (
-                <div key={service.number} className="service-story-background" style={{ backgroundImage: `url("${service.image}")`, opacity: stacked ? 0 : clamp(1 - Math.abs(position - index)) * 0.22 }} />
+                <div key={service.number} className={`service-story-background${!stacked && activeIndex === index ? " is-active" : ""}`} style={{ backgroundImage: `url("${service.image}")` }} />
               ))}
             </div>
             {services.map((service, index) => {
-              const opacity = stacked ? 1 : clamp(1 - Math.abs(position - index));
               const interactive = stacked || activeIndex === index;
               return (
                 <article
-                  className="service-story-panel"
+                  className={`service-story-panel${interactive ? " is-active" : ""}`}
                   key={service.number}
-                  style={{ opacity, pointerEvents: interactive ? "auto" : "none" }}
+                  style={{ pointerEvents: interactive ? "auto" : "none" }}
                   aria-hidden={!interactive}
                   inert={!interactive}
                 >
