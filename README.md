@@ -1,31 +1,52 @@
-# Arcalogix — About Us platform access + contact update
+# Arcalogix About Us — contact form connection (Next.js + Resend)
 
-## Replace these files in your existing Arcalogix marketing site
+This update makes **Request a chat or demo** deliver an email through Resend, using a dedicated backend route. It does **not** change the homepage's existing `/api/contact` endpoint or modify the Arcalogix header, scroll behaviour, or page design.
 
-- `app/about/page.tsx`
-- `app/about/about.module.css`
-- `app/about/AboutContactForm.tsx`
+## Install in your existing Arcalogix marketing site
 
-If your project uses `src/app/`, install under `src/app/about/` instead.
+1. Open the Arcalogix **marketing website** project in VS Code (not the dashboard repository).
+2. Replace `app/about/AboutContactForm.tsx` with the copy in this ZIP.
+3. Add `app/api/about-contact/route.ts` from this ZIP. If your code uses `src/app/`, use `src/app/api/about-contact/route.ts` and `src/app/about/AboutContactForm.tsx` instead.
+4. Do not replace any other files. **Do not rename** `app/api/about-contact/route.ts` to `app/api/contact/route.ts`.
 
-Do **not** change the existing `app/page.tsx`, `components/SiteHeader.tsx`, `app/about/AboutTopReset.tsx`, or `app/about/AboutMotion.tsx`. This keeps the existing homepage, working instant navigation, and About animations intact.
+## Set up Resend
 
-## What changed
+1. In [Resend](https://resend.com/domains), confirm the sending domain you want to use is **Verified**. The sender you choose must use that verified domain.
+2. In [Resend API Keys](https://resend.com/api-keys), create or use a sending-capable API key.
+3. In **Vercel → Project → Settings → Environment Variables**, add the following variables to the **Arcalogix marketing website** project (not the dashboard project):
 
-1. Both openArcade links are exact:
-   - Discover openArcade: https://openarcade-nextjs-starter.vercel.app/
-   - Explore participation / investment: https://openarcade-nextjs-starter.vercel.app/ownership#top
-2. The bottom About section is retitled **Your workspace. Or a conversation.**
-3. There are three clear pathways: **Customer dashboard** (Sign in / Create account), **Arcalogix authoring** (Sign in / Request access), and **Start a conversation** (Request a chat or demo).
-4. The new button opens the existing contact dialog and prefills **Request a chat or demo**. Users can change topics. The form still posts to `/api/contact`, with no backend modifications or unverified scheduling promises.
-5. Existing page sections, footer, and layout are preserved.
+| Name | Value |
+|------|-------|
+| `RESEND_API_KEY` | Your secret Resend API key (do not put it in source code). |
+| `ABOUT_CONTACT_TO_EMAIL` | The Arcalogix team mailbox to receive submissions (e.g., `sales@arcalogix.com`). |
+| `ABOUT_CONTACT_FROM_EMAIL` | A verified sender, e.g., `Arcalogix <website@notifications.arcalogix.com>` **only if that domain is verified**. |
 
-## Test locally before GitHub / Vercel
+Apply the variables to **Production**. Also apply to **Preview** if you test a preview deployment. Redeploy the latest commit after changing variables.
 
-1. Run `npm run dev` and open `/about`.
-2. Check the two openArcade links at the end of **Our Big Ambition**.
-3. Scroll to the bottom and test the three access paths.
-4. Open **Request a chat or demo**; change topics and submit a test message using the deployed `/api/contact` backend.
-5. Verify desktop and mobile sizes before committing and pushing.
+4. For local testing, add the three variables to `.env.local` in the **root** of the marketing website project. Do not commit `.env.local` or any API key to GitHub. Restart `npm run dev` after saving.
 
-Note: the authoring **Request access** link remains the existing projects.arcalogix.com URL. If you have a dedicated request-access path, update it in the `destinations` object in `page.tsx`.
+Example `.env.local` (replace all example values):
+
+```env
+RESEND_API_KEY=re_your_private_key_here
+ABOUT_CONTACT_TO_EMAIL=sales@arcalogix.com
+ABOUT_CONTACT_FROM_EMAIL="Arcalogix <website@YOUR-VERIFIED-DOMAIN>"
+```
+
+## Verify the connection
+
+1. Run `npm run dev` and visit `http://localhost:3000/about`.
+2. Click **Request a chat or demo**; complete the fields, check consent, and click **Send inquiry**.
+3. Browser developer tools → **Network** → select the POST to `/api/about-contact`:
+   - `200` = Resend accepted the email request. Check the recipient inbox **and Resend Logs**.
+   - `400` = form validation error; inspect the JSON response.
+   - `404` = the API route is missing / in the wrong folder, or the new deployment is not live.
+   - `503` = a required Vercel environment variable is missing.
+   - `502` = Resend rejected the request or was unreachable; check **Vercel → Logs** for `[about-contact]` and check Resend logs. Common causes: an invalid API key or unverified sender domain.
+4. Push the changes to GitHub, allow Vercel to deploy, and repeat the test using the real `/about` page.
+
+### Important
+
+- Email is sent **from** your verified domain and uses the visitor email as **Reply-To**. This lets your team reply directly to the inquiry without spoofing the visitor's email address.
+- The route includes basic input validation, HTML escaping and a hidden anti-spam field. For sustained public use, consider a CAPTCHA or server-side rate limiting to reduce automated abuse.
+- This approach **emails the submission** but does not store it in your Supabase CRM or dashboard. If you also want to record inquiries there, that should be added as a separate, tested integration.

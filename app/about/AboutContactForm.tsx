@@ -10,6 +10,7 @@ type ContactFields = {
   company: string;
   interest: string;
   message: string;
+  website: string; // Hidden anti-spam field.
 };
 
 const initialFields: ContactFields = {
@@ -18,9 +19,10 @@ const initialFields: ContactFields = {
   company: "",
   interest: "",
   message: "",
+  website: "",
 };
 
-/** Posts into the marketing site's existing /api/contact inquiry endpoint. */
+/** Posts demo/chat inquiries to the isolated About Us Resend endpoint. */
 export default function AboutContactForm() {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -87,7 +89,7 @@ export default function AboutContactForm() {
     setSending(true);
     setError("");
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/api/about-contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -99,6 +101,7 @@ export default function AboutContactForm() {
           interest: fields.interest,
           message: fields.message.trim() || null,
           consent: true,
+          website: fields.website,
         }),
       });
       const result = await response.json().catch(() => null) as { error?: string; message?: string } | null;
@@ -158,6 +161,9 @@ export default function AboutContactForm() {
                   Send us a note about your project, partnership idea, or the platform you would like to see. We'll follow up to discuss a call or demo.
                 </p>
                 <form className={styles.contactForm} onSubmit={submit}>
+                  <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+                    <label>Website<input name="website" tabIndex={-1} autoComplete="off" value={fields.website} onChange={(event) => updateField("website", event.target.value)} /></label>
+                  </div>
                   <div className={styles.contactGrid}>
                     <label className={styles.contactField}>Full name *
                       <input ref={firstFieldRef} name="full_name" type="text" autoComplete="name" minLength={2} maxLength={120} required value={fields.full_name} onChange={(event) => updateField("full_name", event.target.value)} />
