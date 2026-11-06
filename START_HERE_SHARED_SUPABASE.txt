@@ -1,0 +1,11 @@
+# Arcalogix website - using the same Supabase project as OpenArcade
+
+1. Open the existing OpenArcade Supabase project > SQL Editor.
+2. Run `supabase/schema.sql`. It creates `public.enterprise_inquiries` only. It does not modify `public.architect_signups`.
+3. In the NEW Arcalogix Vercel project, set `SUPABASE_URL` to the same project URL and `SUPABASE_SECRET_KEY` to the same server-side secret key already used by OpenArcade.
+4. Redeploy the Arcalogix site and submit a test inquiry; check Supabase Table Editor > enterprise_inquiries.
+5. Leave the existing OpenArcade site/repository/Vercel deployment unchanged.
+
+IMPORTANT: Both sites share the same underlying database and privileged credential. The lead data is separated by table, not by security boundary. Never put a server-side secret in browser code, a NEXT_PUBLIC_ variable, or GitHub.
+
+DEPLOYMENT: This folder is a NEW Next.js project. Do not paste it over OpenArcade. See README_FIRST.md for complete steps.
