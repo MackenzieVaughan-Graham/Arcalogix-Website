@@ -7,204 +7,205 @@ import AboutMotion from "./AboutMotion";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
-  title: "About Us | Arcalogix",
+  title: "About Arcalogix | Connecting the Built Environment",
   description:
-    "Arcalogix connects the AEC professionals who design and deliver spaces with the customers who occupy and operate them. Learn about our technology and the openArcade vision.",
+    "Arcalogix connects the professionals who design and deliver spaces with the people who occupy and operate them. Discover our mission and the openArcade vision.",
 };
 
-// These URLs are kept in one place for easy editing in VS Code.
-// The openArcade destination uses the domain from the existing About page.
-// Confirm that your new openArcade Next.js site has been deployed there before publishing.
+// Update these destinations if your deployment domains change.
 const destinations = {
   openArcade: "https://openarcade.com/",
-  openArcadeOwnership: "https://openarcade.com/ownership",
+  openArcadeParticipation: "https://openarcade.com/ownership",
   customerLogin: "https://arcalogixdashboard.com/login",
   customerSignup: "https://arcalogixdashboard.com/create-account",
   authoringLogin: "https://projects.arcalogix.com/login",
-  authoringSignup: "https://projects.arcalogix.com/",
+  authoringAccess: "https://projects.arcalogix.com/",
 } as const;
 
-const products = [
+const connections = [
+  "Architects + AEC teams",
+  "Enterprise occupiers",
+  "Owners + operators",
+  "Product + technology partners",
+] as const;
+
+const approach = [
   {
     number: "01",
-    name: "Arch!e",
-    tag: "PLAN → MODEL",
+    title: "Understand the need.",
     description:
-      "Our in-house AI turns 2D floor plans into interactive 3D spatial models—a faster, shared starting point for exploring a space.",
+      "Start with the people, policies, standards and business decisions a space needs to support—not just its floor plan.",
   },
   {
     number: "02",
-    name: "AxLayout",
-    tag: "MODEL → DESIGN",
+    title: "Bring everyone into the same picture.",
     description:
-      "AEC professionals author layouts, apply occupier standards and test design options against actual workplace requirements.",
+      "Make spatial information accessible to the professionals developing a design and the customers evaluating the outcome.",
   },
   {
     number: "03",
-    name: "Customer dashboard + IoT",
-    tag: "DESIGN → DECISIONS",
+    title: "Keep the information useful.",
     description:
-      "Customers review projects and spaces, while our AWS IoT Core integration can connect device data to spatial models for operational digital twins.",
+      "Carry the model and its context beyond early planning, creating a foundation for revisions and ongoing operations.",
   },
 ] as const;
 
 export default function AboutPage() {
   return (
     <>
-      {/* Keep the tested instant scroll reset and the existing navigation. */}
+      {/* Preserve the proven instant /about top-of-page navigation behaviour. */}
       <AboutTopReset />
       <AboutMotion />
       <div id="about-top" aria-hidden="true" />
       <SiteHeader />
 
-      <main id="main-content" data-page="arcalogix-about" className={styles.aboutPage}>
+      <main className={styles.aboutPage} data-page="arcalogix-about" id="main-content">
         <section className={styles.hero} aria-labelledby="about-title">
           <div className={`page-shell ${styles.heroLayout}`}>
             <div className={styles.heroCopy}>
-              <p className="eyebrow">ABOUT ARCALOGIX / OUR PURPOSE</p>
-              <h1 id="about-title">Better spaces begin with <span>better connections.</span></h1>
+              <p className="eyebrow">ABOUT ARCALOGIX</p>
+              <h1 id="about-title">We believe space should <span>work together.</span></h1>
               <p className={styles.heroLead}>
-                We build web-based software that connects the professionals who design and deliver spaces with the customers who occupy and operate them.
+                Arcalogix is a technology company connecting the professionals who design and deliver spaces with the people who occupy and operate them.
               </p>
-              <div className={styles.heroActions}>
-                <a className="button button-primary button-large" href="#our-approach">
-                  How we connect the industry <span aria-hidden="true">↓</span>
-                </a>
-                <a className={styles.heroTextLink} href={destinations.openArcade} target="_blank" rel="noopener noreferrer">
-                  Explore openArcade <span aria-hidden="true">↗</span>
-                </a>
-              </div>
+              <p className={styles.heroSupporting}>
+                Our purpose is simple: make it easier to share the right information, make informed decisions and carry that understanding through the life of a space.
+              </p>
+              <a className={styles.heroLink} href="#our-purpose">
+                Get to know us <span aria-hidden="true">↓</span>
+              </a>
             </div>
 
-            <div className={styles.network} aria-label="Arcalogix connects AEC professionals with occupiers and operators through shared spatial information">
-              <div className={styles.networkTop}>
-                <span>ARCALOGIX / THE CONNECTED SPACE</span>
-                <span>01—03</span>
-              </div>
-              <div className={styles.networkContent}>
-                <div className={styles.networkSide}>
-                  <span>THE PROFESSIONALS</span>
+            <div className={styles.connectionVisual} aria-label="Arcalogix connects design and delivery professionals with occupiers and building operators">
+              <div className={styles.visualTopline}><span>ARCALOGIX / ONE SHARED CONTEXT</span><span>01—03</span></div>
+              <div className={styles.visualDiagram}>
+                <div className={styles.diagramAudience}>
+                  <small>PEOPLE WHO CREATE SPACE</small>
                   <strong>Design<br />+ deliver</strong>
-                  <small>Architects, designers and AEC teams</small>
+                  <span>Architects / AEC teams</span>
                 </div>
-                <div className={styles.networkLine} aria-hidden="true"><i /></div>
-                <div className={styles.networkCore}>
-                  <div className={styles.networkModel} aria-hidden="true">
-                    <span className={styles.networkShapeA} />
-                    <span className={styles.networkShapeB} />
-                    <span className={styles.networkShapeC} />
-                    <span className={styles.networkShapeD} />
-                  </div>
-                  <span>ARCALOGIX</span>
-                  <strong>Shared spatial<br />intelligence</strong>
+                <div className={styles.diagramJoin} aria-hidden="true"><i /></div>
+                <div className={styles.diagramCentre}>
+                  <div className={styles.diagramMark} aria-hidden="true"><i /><i /><i /><i /></div>
+                  <small>ARCALOGIX</small>
+                  <strong>One shared<br />spatial foundation</strong>
                 </div>
-                <div className={styles.networkLine} aria-hidden="true"><i /></div>
-                <div className={styles.networkSide}>
-                  <span>THE CUSTOMERS</span>
+                <div className={styles.diagramJoin} aria-hidden="true"><i /></div>
+                <div className={styles.diagramAudience}>
+                  <small>PEOPLE WHO USE SPACE</small>
                   <strong>Occupy<br />+ operate</strong>
-                  <small>Enterprise real estate and workplace teams</small>
+                  <span>Owners / enterprise teams</span>
                 </div>
               </div>
-              <div className={styles.networkBottom}>ONE MODEL FOUNDATION <span>•</span> CONNECTED REQUIREMENTS <span>•</span> BETTER DECISIONS</div>
+              <div className={styles.visualFooter}>PEOPLE <span>·</span> PLACE <span>·</span> POLICY</div>
             </div>
           </div>
         </section>
 
-        <section id="our-approach" className={`${styles.connectionSection} ${styles.anchorSection}`} aria-labelledby="connect-title">
-          <div className="page-shell">
-            <div className={styles.sectionHeading} data-about-reveal>
-              <p className="eyebrow">01 / WHY WE EXIST</p>
-              <h2 id="connect-title">Two sides of every project.<br /><span>One shared understanding.</span></h2>
-              <p>Design teams and building customers often work from the same space—but with different information, tools and objectives. We bring those perspectives closer together.</p>
+        <section id="our-purpose" className={`${styles.purpose} ${styles.anchorSection}`} aria-labelledby="purpose-title">
+          <div className={`page-shell ${styles.purposeLayout}`}>
+            <div data-about-reveal>
+              <p className="eyebrow">01 / OUR PURPOSE</p>
+              <h2 id="purpose-title">The best spaces start with <span>a shared understanding.</span></h2>
             </div>
-            <div className={styles.connectionGrid}>
-              <article className={styles.connectionColumn} data-about-reveal>
-                <div className={styles.columnMeta}>FOR THE PEOPLE WHO CREATE SPACE <span>01</span></div>
-                <h3>Make design decisions easier to develop.</h3>
-                <p>Give architects and AEC professionals the models, authoring tools and customer requirements they need to plan spaces with greater clarity.</p>
-                <div className={styles.columnTag}>ARCH!E <span>+</span> AXLAYOUT</div>
-              </article>
-              <article className={styles.connectionColumn} data-about-reveal>
-                <div className={styles.columnMeta}>FOR THE PEOPLE WHO USE SPACE <span>02</span></div>
-                <h3>Make workplace decisions easier to understand.</h3>
-                <p>Give occupiers and portfolio teams a clearer view of whether a space supports their people, policies and ongoing operations.</p>
-                <div className={styles.columnTag}>CUSTOMER DASHBOARD <span>+</span> SPATIAL DATA</div>
-              </article>
+            <div className={styles.purposeCopy} data-about-reveal>
+              <p>
+                A building project brings together different people with different priorities. Designers focus on the space they are creating. Customers need to know whether that space will work for their people, operations and business.
+              </p>
+              <p>
+                We exist to close that gap. By connecting requirements, design decisions and spatial information, Arcalogix gives both sides a clearer way to collaborate.
+              </p>
+            </div>
+          </div>
+          <div className={`page-shell ${styles.partners}`} data-about-reveal>
+            <p>WHO WE CONNECT</p>
+            <div className={styles.partnerItems}>
+              {connections.map((connection) => <span key={connection}>{connection}</span>)}
             </div>
           </div>
         </section>
 
-        <section className={styles.productSection} aria-labelledby="products-title">
-          <div className="page-shell">
-            <div className={styles.sectionHeading} data-about-reveal>
-              <p className="eyebrow">02 / WHAT WE BUILD</p>
-              <h2 id="products-title">One connected workflow.<br /><span>Tools built for each step.</span></h2>
+        <section className={styles.approachSection} aria-labelledby="approach-title">
+          <div className={`page-shell ${styles.approachLayout}`}>
+            <div className={styles.approachIntro} data-about-reveal>
+              <p className="eyebrow">02 / HOW WE WORK</p>
+              <h2 id="approach-title">Connected thinking.<br /><span>Better decisions.</span></h2>
+              <p>
+                We create software around a continuous flow of information—not isolated drawings, disconnected teams or one-off project files.
+              </p>
+              <p className={styles.productReference}>
+                Today, Arch!e, AxLayout, the customer dashboard and our AWS IoT Core integration provide a working foundation for model creation, authoring, customer planning and connected spatial data.
+              </p>
             </div>
-            <div className={styles.productGrid}>
-              {products.map((product) => (
-                <article className={styles.productCard} key={product.number} data-about-reveal>
-                  <div className={styles.productMeta}><span>{product.number} / 03</span><span>{product.tag}</span></div>
-                  <h3>{product.name}</h3>
-                  <p>{product.description}</p>
+            <div className={styles.approachList}>
+              {approach.map((step) => (
+                <article key={step.number} className={styles.approachItem} data-about-reveal>
+                  <span className={styles.approachNumber}>{step.number}</span>
+                  <div>
+                    <h3>{step.title}</h3>
+                    <p>{step.description}</p>
+                  </div>
                 </article>
               ))}
             </div>
-            <p className={styles.productNote}>Existing tools and integrations shown above. Product availability and implementation vary by project.</p>
           </div>
         </section>
 
-        <section className={styles.visionSection} aria-labelledby="vision-title">
-          <div className={`page-shell ${styles.visionLayout}`}>
-            <div className={styles.visionCopy} data-about-reveal>
-              <p className="eyebrow">03 / OUR AMBITION</p>
-              <h2 id="vision-title">This is the foundation.<br /><span>openArcade is the next step.</span></h2>
-              <p>
-                Our ambition is a shared digital foundation for the AEC industry: a place where professionals can deliver spaces and customers can manage them through connected models, requirements and revisions.
-              </p>
-              <p>
-                The planned openArcade ecosystem builds toward documentation workflows with licensed AEC professionals, project coordination, integrations and payments—connecting design, delivery and ongoing operations.
-              </p>
-              <div className={styles.visionActions}>
-                <a className={styles.visionPrimary} href={destinations.openArcade} target="_blank" rel="noopener noreferrer">
-                  Discover openArcade <span aria-hidden="true">↗</span>
-                </a>
-                <a className={styles.visionSecondary} href={destinations.openArcadeOwnership} target="_blank" rel="noopener noreferrer">
-                  Explore the ownership initiative <span aria-hidden="true">↗</span>
-                </a>
-              </div>
-              <small className={styles.visionCaveat}>The openArcade expansion is a roadmap. The ownership initiative is exploratory and is not an offer of securities or a request for payment.</small>
-            </div>
-            <div className={styles.visionGraphic} data-about-reveal>
-              <div className={styles.visionGraphicHeader}>THE OPENARCADE DIRECTION <span>PLANNED</span></div>
-              <div className={styles.visionStep}><span>01</span><div><strong>Shared project information</strong><p>Models · Requirements · Revisions</p></div></div>
-              <div className={styles.visionStep}><span>02</span><div><strong>Professional delivery</strong><p>Documentation · Coordination · Review</p></div></div>
-              <div className={styles.visionStep}><span>03</span><div><strong>Connected operations</strong><p>Portfolio data · Integrations · Intelligence</p></div></div>
-              <div className={styles.visionGraphicFooter}>FROM INITIAL REQUIREMENTS TO THE LIFE OF THE SPACE</div>
-            </div>
-          </div>
-        </section>
-
-        <section id="platform-access" className={`${styles.accessSection} ${styles.anchorSection}`} aria-labelledby="access-title">
+        <section className={styles.futureSection} aria-labelledby="future-title">
           <div className="page-shell">
-            <div className={styles.accessHeading} data-about-reveal>
-              <p className="eyebrow">WORK WITH ARCALOGIX</p>
-              <h2 id="access-title">Access your workspace.</h2>
-              <p>Already working with us? Choose the platform for your role.</p>
-            </div>
-            <div className={styles.accessList}>
-              <div className={styles.accessRow} data-about-reveal>
-                <div><span>FOR OCCUPIERS AND CUSTOMERS</span><h3>Customer dashboard</h3></div>
-                <div className={styles.accessLinks}>
-                  <a href={destinations.customerLogin} target="_blank" rel="noopener noreferrer">Log in ↗</a>
-                  <a href={destinations.customerSignup} target="_blank" rel="noopener noreferrer">Create an account ↗</a>
-                </div>
+            <div className={styles.futureIntro} data-about-reveal>
+              <p className="eyebrow">03 / OUR BIG AMBITION</p>
+              <h2 id="future-title">Make a connected digital foundation <span>the standard for the built environment.</span></h2>
+              <div className={styles.futureBody}>
+                <p>
+                  Our ambition is bigger than a set of software tools. We want to change how the AEC industry works together—from the first customer requirement to design, construction and the ongoing operation of a space.
+                </p>
+                <p>
+                  <strong>openArcade</strong> is the planned ecosystem to carry this forward: shared models, requirements, revisions and professional workflows in one connected environment. Its roadmap includes a documentation engine, project coordination, integrations and payments, with regulated design and approvals remaining with licensed professionals.
+                </p>
               </div>
-              <div className={styles.accessRow} data-about-reveal>
-                <div><span>FOR DESIGN AND AEC TEAMS</span><h3>Arcalogix authoring</h3></div>
-                <div className={styles.accessLinks}>
-                  <a href={destinations.authoringLogin} target="_blank" rel="noopener noreferrer">Log in ↗</a>
-                  <a href={destinations.authoringSignup} target="_blank" rel="noopener noreferrer">Join / sign up ↗</a>
-                </div>
+            </div>
+
+            <div className={styles.futureContinuum} data-about-reveal aria-label="Arcalogix foundation today and planned openArcade evolution">
+              <div><span>TODAY</span><strong>Arcalogix</strong><small>Planning + spatial intelligence</small></div>
+              <i aria-hidden="true" />
+              <div><span>BUILDING TOWARD</span><strong>openArcade</strong><small>Connected professional delivery</small></div>
+              <i aria-hidden="true" />
+              <div><span>THE AMBITION</span><strong>Industry-wide</strong><small>A shared digital foundation</small></div>
+            </div>
+
+            <div className={styles.invitation} data-about-reveal>
+              <div>
+                <p className="eyebrow">HELP SHAPE WHAT COMES NEXT</p>
+                <h3>The future of this industry should be built with the people in it.</h3>
+                <p>
+                  We invite architects, AEC professionals and others who share this vision to explore openArcade—and register their interest in helping shape its future, including through a potential investment opportunity.
+                </p>
+                <small>Participation and investment are exploratory. Registration is an expression of interest only; no securities are being offered and no payment is requested.</small>
+              </div>
+              <div className={styles.invitationActions}>
+                <a className={styles.primaryAction} href={destinations.openArcade} target="_blank" rel="noopener noreferrer">Discover openArcade <span aria-hidden="true">↗</span></a>
+                <a className={styles.secondaryAction} href={destinations.openArcadeParticipation} target="_blank" rel="noopener noreferrer">Explore participation / investment <span aria-hidden="true">↗</span></a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className={styles.accessSection} aria-labelledby="access-title">
+          <div className={`page-shell ${styles.accessLayout}`} data-about-reveal>
+            <div>
+              <p className="eyebrow">ALREADY WORKING WITH US?</p>
+              <h2 id="access-title">Continue your work.</h2>
+              <p>Access the workspace that fits your role.</p>
+            </div>
+            <div className={styles.accessRows}>
+              <div className={styles.accessRow}>
+                <div><strong>Customer dashboard</strong><small>Occupiers + project teams</small></div>
+                <div><a href={destinations.customerLogin} target="_blank" rel="noopener noreferrer">Sign in ↗</a><a href={destinations.customerSignup} target="_blank" rel="noopener noreferrer">Create account ↗</a></div>
+              </div>
+              <div className={styles.accessRow}>
+                <div><strong>Arcalogix authoring</strong><small>Architects + AEC professionals</small></div>
+                <div><a href={destinations.authoringLogin} target="_blank" rel="noopener noreferrer">Sign in ↗</a><a href={destinations.authoringAccess} target="_blank" rel="noopener noreferrer">Request access ↗</a></div>
               </div>
             </div>
           </div>
@@ -221,7 +222,7 @@ export default function AboutPage() {
             <span>© {new Date().getFullYear()} Arcalogix</span>
             <div>
               <Link href="/">Home</Link>
-              <a href="/about">About</a>
+              <Link href="/about" scroll={false}>About</Link>
               <a href={destinations.openArcade} target="_blank" rel="noopener noreferrer">openArcade</a>
               <Link href="/privacy">Privacy</Link>
             </div>
