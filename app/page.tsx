@@ -2,49 +2,56 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import PlatformJourney from "@/components/PlatformJourney";
-import AudienceSelector from "@/components/AudienceSelector";
 import { ContactButton } from "@/components/ContactProvider";
 
 const services = [
   {
     number: "01",
     label: "PLANNING",
-    title: "Test fits & space planning",
-    description: "See what a space can support before a lease, move, expansion, or reconfiguration. Every layout is informed by your requirements—not a generic template.",
-    items: ["Program-based test fits", "Workplace standards applied", "Options and adjustments"],
+    title: "Test fitting",
+    description: "Understand how a potential or existing space fits your requirements before moving forward. Our design team applies your workplace standards to each test fit.",
+    priceQualifier: "PER PROJECT",
+    price: "$0.15",
+    priceUnit: "/ sq ft",
+    priceDetail: "Includes 2 free iterations per project",
+    items: ["Standards-based test fitting", "Space planning and layout options", "Two included iterations"],
     interest: "Test fits and planning",
-    image: "/images/portfolio-model.webp",
-    alt: "Architectural 3D office model used to explore test-fit scenarios",
   },
   {
     number: "02",
     label: "DELIVERY",
     title: "Design & permitting support",
-    description: "Carry approved spatial decisions into design development, drawing coordination, and jurisdiction-appropriate permitting workflows with professional oversight.",
-    items: ["Design and layout development", "Drawing coordination", "Local professional review where required"],
+    description: "Move an approved layout forward with professional design services, drawing coordination and permitting support, with local professional involvement where required.",
+    priceQualifier: "PROFESSIONAL SERVICES FROM",
+    price: "$75",
+    priceUnit: "/ hour",
+    priceDetail: "Starting rate for professional services",
+    items: ["Design development", "Drawing and document coordination", "Permitting support"],
     interest: "Design and permitting",
-    image: "/images/drawing-workflow.webp",
-    alt: "Illustrative Arcalogix drawing workflow prototype",
   },
   {
     number: "03",
     label: "INTELLIGENCE",
     title: "Portfolio intelligence",
-    description: "Turn isolated floor plans into comparable spatial information for capacity, design standards, real estate options, and long-term space decisions.",
-    items: ["Consistent portfolio records", "Scenario comparisons", "Standard-based decision inputs"],
+    description: "Keep your Spatial Intelligence Models (SIMs) active in one platform so teams can revisit spaces, compare options and use a consistent spatial record across the portfolio.",
+    priceQualifier: "LIVE SIM HOSTING",
+    price: "$0.01",
+    priceUnit: "/ sq ft / month",
+    priceDetail: "For each SIM kept live on the platform",
+    items: ["Persistent spatial model records", "Portfolio-wide planning context", "Standards and scenario comparison"],
     interest: "Portfolio intelligence",
-    image: null,
-    alt: "",
   },
   {
     number: "04",
     label: "OPERATIONS",
-    title: "Digital twins, IoT & assets",
-    description: "Extend the spatial record into occupied operations with connected space information, asset context, and optional occupancy or environmental data integrations.",
-    items: ["Digital twin foundations", "IoT data integration pathways", "Space and asset context"],
+    title: "Digital twins, IoT & asset management",
+    description: "Extend the spatial model into occupied operations with optional connected device data and asset information, designed to support space management over time.",
+    priceQualifier: "CONNECTED OPERATIONS FROM",
+    price: "$10",
+    priceUnit: "/ device / month",
+    priceDetail: "Starting price per connected device",
+    items: ["Digital twin foundations", "IoT occupancy and environmental inputs", "Space and asset context"],
     interest: "Digital twins and IoT",
-    image: null,
-    alt: "",
   },
 ];
 
@@ -105,30 +112,38 @@ export default function Home() {
           </div>
         </section>
 
-        {/* SERVICES */}
+        {/* PLATFORM AND SERVICES — position the value proposition on the left, pricing on the right */}
         <section className="services-section section-pad" id="services" aria-labelledby="services-heading">
-          <div className="page-shell">
-            <div className="section-heading services-heading">
+          <div className="page-shell services-layout">
+            <div className="services-intro">
               <p className="eyebrow">03 / PLATFORM + SERVICES</p>
               <h2 id="services-heading">Software for the decisions.<br /><span>People for the delivery.</span></h2>
-              <p className="section-lede">Use the spatial platform to see the options. Work with our internal design team to carry projects forward, across your locations and through the right professional workflows.</p>
+              <p className="section-lede">One connected spatial platform, backed by our internal design team. Standardize planning across locations, deliver your projects, and keep the information useful long after move-in.</p>
             </div>
-            <div className="service-grid">
-              {services.map((s, index) => (
-                <article className="service-card" key={s.number}>
-                  <div className="service-card-top"><span>{s.number} / {s.label}</span><span aria-hidden="true">↗</span></div>
-                  <div className="service-art">
-                    {s.image ? <Image src={s.image} alt={s.alt} fill sizes="(max-width: 760px) 100vw, 50vw" /> : index === 2 ? (
-                      <div className="service-analytics" aria-label="Illustration of standardized information across a portfolio"><div className="service-chart-head"><i /> STANDARDIZED PORTFOLIO <small>ILLUSTRATIVE</small></div><div className="service-chart-row"><b>Site readiness</b><span className="bar-track"><i style={{ width: "78%" }} /></span></div><div className="service-chart-row"><b>Capacity fit</b><span className="bar-track"><i style={{ width: "61%" }} /></span></div><div className="service-chart-row"><b>Program alignment</b><span className="bar-track"><i style={{ width: "86%" }} /></span></div></div>
-                    ) : (
-                      <div className="service-network" aria-label="Illustration of optional occupancy sensors and asset information connected to a model"><div className="network-core">SIM</div><div className="network-item network-item-a">SPACE</div><div className="network-item network-item-b">IOT</div><div className="network-item network-item-c">ASSETS</div><span className="network-line network-line-a" /><span className="network-line network-line-b" /><span className="network-line network-line-c" /></div>
-                    )}
+            <div className="services-list">
+              {services.map((service) => (
+                <article className="service-row" key={service.number}>
+                  <div className="service-row-top">
+                    <span>{service.number} / {service.label}</span>
+                    <span className="service-row-icon" aria-hidden="true">↗</span>
                   </div>
-                  <div className="service-card-body"><h3>{s.title}</h3><p>{s.description}</p><ul>{s.items.map((item) => <li key={item}>{item}</li>)}</ul><ContactButton className="service-link" interest={s.interest}>Explore this service <span aria-hidden="true">↗</span></ContactButton></div>
+                  <h3>{service.title}</h3>
+                  <p className="service-row-description">{service.description}</p>
+                  <div className="service-price" aria-label={`${service.priceQualifier}: ${service.price} ${service.priceUnit}`}>
+                    <span className="service-price-qualifier">{service.priceQualifier}</span>
+                    <div className="service-price-figure"><strong>{service.price}</strong><span>{service.priceUnit}</span></div>
+                    <span className="service-price-detail">{service.priceDetail}</span>
+                  </div>
+                  <ul className="service-includes">
+                    {service.items.map((item) => <li key={item}>{item}</li>)}
+                  </ul>
+                  <ContactButton className="service-link" interest={service.interest}>
+                    Discuss this service <span aria-hidden="true">↗</span>
+                  </ContactButton>
                 </article>
               ))}
+              <p className="services-note">Final scope, any applicable third-party costs, professional sign-off and service availability depend on the project and jurisdiction. Digital twin and IoT integrations are an expanding part of the offering.</p>
             </div>
-            <p className="services-note">Service scope and professional sign-off depend on the project and jurisdiction. Digital-twin and IoT integrations are an evolving part of the platform offering.</p>
           </div>
         </section>
 
@@ -144,13 +159,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* AUDIENCES */}
-        <AudienceSelector />
-
         {/* VISION */}
         <section className="continuum-section section-pad" aria-labelledby="continuum-heading">
           <div className="page-shell">
-            <p className="eyebrow">06 / A CONNECTED SPACE LIFECYCLE</p>
+            <p className="eyebrow">05 / A CONNECTED SPACE LIFECYCLE</p>
             <div className="continuum-intro"><h2 id="continuum-heading">The floor plan is the beginning.<br /><span>Not the final deliverable.</span></h2><p>Keep the spatial record useful as a site moves from consideration to occupation and, ultimately, to its next change.</p></div>
             <div className="continuum-line">
               <div><span className="continuum-node">01</span><h3>Evaluate</h3><p>Understand the existing space</p></div>

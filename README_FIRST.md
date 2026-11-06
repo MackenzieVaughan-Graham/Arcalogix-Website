@@ -46,9 +46,8 @@ The sample images are user-supplied Arcalogix project / presentation assets, opt
 - Hero — one portfolio, one strategy
 - Spatial platform journey — floor plan → spatial model → standardized test fit → intelligence
 - People / Place / Policy enterprise standards
-- Services — test fits, design and permitting, portfolio intelligence, digital twins and IoT
+- Services — test fitting at $0.15/sq ft per project (2 free iterations), design and permitting support from $75/hour, SIM hosting at $0.01/sq ft/month, digital twins and IoT from $10/device/month
 - Global service & professional coordination
-- Audience-specific views — enterprise occupier, landlord / owner, tenant / occupier
 - Connected lifecycle + enquiry form
 
 ### Where to make changes
@@ -56,7 +55,6 @@ The sample images are user-supplied Arcalogix project / presentation assets, opt
 - `app/page.tsx`: messaging, service content, CTAs, section order
 - `app/globals.css`: visual system and responsive styling
 - `components/PlatformJourney.tsx`: scroll steps and image selection
-- `components/AudienceSelector.tsx`: audience positioning
 - `components/ContactProvider.tsx`: form fields, interaction and success state
 - `app/api/contact/route.ts`: protected contact API
 - `supabase/schema.sql`: lead tracking table
@@ -69,3 +67,10 @@ The sample images are user-supplied Arcalogix project / presentation assets, opt
 - Test form submission, spam controls, mobile navigation, screen reader accessibility and SEO metadata.
 - Test `npm run build` after installing dependencies.
 - Keep `arcalogix.com` on the existing site until the new Vercel preview is approved.
+
+## Updated submission CTA and services
+
+- Top-right `Submit a new project` button links to https://arcalogixdashboard.com/general-submit-project (opens in a new tab).
+- Platform + Services uses a left editorial introduction and a right-side stack of four pricing/service panels. At narrower widths it stacks vertically for readability.
+- The `05 / WHO IT'S FOR` block and header link have been removed; the connected space lifecycle is section 05.
+- `app/page.tsx`, `app/globals.css`, and `components/SiteHeader.tsx` are the only required website-file changes for this update.
