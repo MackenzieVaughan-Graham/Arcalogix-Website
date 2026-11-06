@@ -1,26 +1,31 @@
-# Arcalogix logo -> homepage top (VS Code / GitHub)
+# Arcalogix — About Us platform access + contact update
 
-## Install
+## Replace these files in your existing Arcalogix marketing site
 
-Extract this ZIP into your EXISTING Arcalogix marketing Next.js project.
-Replace exactly:
+- `app/about/page.tsx`
+- `app/about/about.module.css`
+- `app/about/AboutContactForm.tsx`
 
-  components/SiteHeader.tsx
+If your project uses `src/app/`, install under `src/app/about/` instead.
 
-If your project uses a src directory, use src/components/SiteHeader.tsx.
+Do **not** change the existing `app/page.tsx`, `components/SiteHeader.tsx`, `app/about/AboutTopReset.tsx`, or `app/about/AboutMotion.tsx`. This keeps the existing homepage, working instant navigation, and About animations intact.
 
-Do not change app/page.tsx, app/about/page.tsx, app/globals.css,
-or components/SiteHeader.module.css.
+## What changed
 
-## Behaviour
+1. Both openArcade links are exact:
+   - Discover openArcade: https://openarcade-nextjs-starter.vercel.app/
+   - Explore participation / investment: https://openarcade-nextjs-starter.vercel.app/ownership#top
+2. The bottom About section is retitled **Your workspace. Or a conversation.**
+3. There are three clear pathways: **Customer dashboard** (Sign in / Create account), **Arcalogix authoring** (Sign in / Request access), and **Start a conversation** (Request a chat or demo).
+4. The new button opens the existing contact dialog and prefills **Request a chat or demo**. Users can change topics. The form still posts to `/api/contact`, with no backend modifications or unverified scheduling promises.
+5. Existing page sections, footer, and layout are preserved.
 
-- From About Us or any other route, selecting the top-left Arcalogix logo performs ordinary browser navigation to `/`, avoiding Next.js scroll-state restoration.
-- When already on the homepage, selecting the logo jumps instantly to top (no smooth scrolling).
-- About Us remains a separate `/about` page with its existing top reset.
-- Desktop button order remains Submit a new project, then Sign In.
-- Existing platform, standards and services navigation remains unchanged.
+## Test locally before GitHub / Vercel
 
-## Deploy
+1. Run `npm run dev` and open `/about`.
+2. Check the two openArcade links at the end of **Our Big Ambition**.
+3. Scroll to the bottom and test the three access paths.
+4. Open **Request a chat or demo**; change topics and submit a test message using the deployed `/api/contact` backend.
+5. Verify desktop and mobile sizes before committing and pushing.
 
-Run `npm run dev`; test the logo both from a scrolled homepage and from `/about`.
-Then commit and push the changed component through GitHub for Vercel deployment.
+Note: the authoring **Request access** link remains the existing projects.arcalogix.com URL. If you have a dedicated request-access path, update it in the `destinations` object in `page.tsx`.

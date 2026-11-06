@@ -5,6 +5,7 @@ import SiteHeader from "@/components/SiteHeader";
 import AboutTopReset from "./AboutTopReset";
 import AboutMotion from "./AboutMotion";
 import styles from "./about.module.css";
+import AboutContactForm from "./AboutContactForm";
 
 export const metadata: Metadata = {
   title: "About Arcalogix | Connecting the Built Environment",
@@ -12,10 +13,10 @@ export const metadata: Metadata = {
     "Arcalogix connects the professionals who design and deliver spaces with the people who occupy and operate them. Discover our mission and the openArcade vision.",
 };
 
-// Update these destinations if your deployment domains change.
+// Active openArcade Vercel deployment and existing Arcalogix account destinations.
 const destinations = {
-  openArcade: "https://openarcade.com/",
-  openArcadeParticipation: "https://openarcade.com/ownership",
+  openArcade: "https://openarcade-nextjs-starter.vercel.app/",
+  openArcadeParticipation: "https://openarcade-nextjs-starter.vercel.app/ownership#top",
   customerLogin: "https://arcalogixdashboard.com/login",
   customerSignup: "https://arcalogixdashboard.com/create-account",
   authoringLogin: "https://projects.arcalogix.com/login",
@@ -192,20 +193,44 @@ export default function AboutPage() {
         </section>
 
         <section className={styles.accessSection} aria-labelledby="access-title">
-          <div className={`page-shell ${styles.accessLayout}`} data-about-reveal>
-            <div>
-              <p className="eyebrow">ALREADY WORKING WITH US?</p>
-              <h2 id="access-title">Continue your work.</h2>
-              <p>Access the workspace that fits your role.</p>
+          <div className={`page-shell ${styles.accessLayout}`}>
+            <div className={styles.accessIntro} data-about-reveal>
+              <p className="eyebrow">04 / WORK WITH ARCALOGIX</p>
+              <h2 id="access-title">Your workspace.<br /><span>Or a conversation.</span></h2>
+              <p>
+                Already working with Arcalogix? Sign in to the right platform. New to what we do? Send our team a message to arrange a conversation or explore a product demo.
+              </p>
             </div>
-            <div className={styles.accessRows}>
+            <div className={styles.accessRows} data-about-reveal>
               <div className={styles.accessRow}>
-                <div><strong>Customer dashboard</strong><small>Occupiers + project teams</small></div>
-                <div><a href={destinations.customerLogin} target="_blank" rel="noopener noreferrer">Sign in ↗</a><a href={destinations.customerSignup} target="_blank" rel="noopener noreferrer">Create account ↗</a></div>
+                <div className={styles.accessRowCopy}>
+                  <span className={styles.accessKicker}>01 / CUSTOMER ACCESS</span>
+                  <strong>Customer dashboard</strong>
+                  <small>For occupiers and customer teams reviewing spaces, submissions, and project deliverables.</small>
+                </div>
+                <div className={styles.accessActions}>
+                  <a href={destinations.customerLogin} target="_blank" rel="noopener noreferrer">Sign in <span aria-hidden="true">↗</span></a>
+                  <a href={destinations.customerSignup} target="_blank" rel="noopener noreferrer">Create account <span aria-hidden="true">↗</span></a>
+                </div>
               </div>
               <div className={styles.accessRow}>
-                <div><strong>Arcalogix authoring</strong><small>Architects + AEC professionals</small></div>
-                <div><a href={destinations.authoringLogin} target="_blank" rel="noopener noreferrer">Sign in ↗</a><a href={destinations.authoringAccess} target="_blank" rel="noopener noreferrer">Request access ↗</a></div>
+                <div className={styles.accessRowCopy}>
+                  <span className={styles.accessKicker}>02 / PROFESSIONAL ACCESS</span>
+                  <strong>Arcalogix authoring</strong>
+                  <small>For architects and AEC professionals developing layouts, working with models, and applying design standards.</small>
+                </div>
+                <div className={styles.accessActions}>
+                  <a href={destinations.authoringLogin} target="_blank" rel="noopener noreferrer">Sign in <span aria-hidden="true">↗</span></a>
+                  <a href={destinations.authoringAccess} target="_blank" rel="noopener noreferrer">Request access <span aria-hidden="true">↗</span></a>
+                </div>
+              </div>
+              <div className={styles.contactRow}>
+                <div className={styles.accessRowCopy}>
+                  <span className={styles.accessKicker}>03 / SPEAK WITH OUR TEAM</span>
+                  <strong>Start a conversation</strong>
+                  <small>Want to see Arcalogix in action, discuss a project, or explore a partnership? Tell us a little about your needs and we can follow up about a chat or demo.</small>
+                </div>
+                <AboutContactForm />
               </div>
             </div>
           </div>
