@@ -1,0 +1,137 @@
+/* Section 05: four selectable milestones with an accessible, shared detail view. */
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  position: relative;
+  margin-top: clamp(50px, 5.6vw, 82px);
+  gap: 12px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 30px;
+  right: 30px;
+  top: 30px;
+  height: 1px;
+  background: #d4d5d9;
+  pointer-events: none;
+}
+.stage {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  text-align: left;
+  position: relative;
+  width: 100%;
+  appearance: none;
+  border: 0;
+  padding: 0 24px 13px 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+.stage:focus-visible { border-radius: 8px; outline-offset: 5px; }
+.circle {
+  width: 61px;
+  height: 61px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 999px;
+  border: 1px solid #d8d8dd;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 790;
+  color: #c7192a;
+  position: relative;
+  transition: background-color .24s ease, color .24s ease, border-color .24s ease, box-shadow .24s ease, transform .24s ease;
+}
+.stage:hover .circle { border-color: #c7192a; box-shadow: 0 0 0 6px rgba(199,25,42,.055); transform: translateY(-2px); }
+.stageActive .circle, .stageActive:hover .circle { background: #c7192a; color: #fff; border-color: #c7192a; box-shadow: 0 0 0 6px rgba(199,25,42,.10); transform: none; }
+.stageTitle {
+  display: block;
+  margin-top: 23px;
+  font-size: clamp(22px,2vw,29px);
+  font-weight: 740;
+  line-height: 1.12;
+  letter-spacing: -.045em;
+  transition: color .24s ease;
+}
+.stageActive .stageTitle { color: #c7192a; }
+.stageTeaser { display: block; margin-top: 8px; color: #86878d; font-size: 14px; line-height: 1.55; max-width: 220px; }
+
+.detail {
+  display: grid;
+  grid-template-columns: minmax(0,1.05fr) minmax(0,.95fr);
+  border: 1px solid #e7e7eb;
+  border-radius: 19px;
+  background: #fff;
+  overflow: hidden;
+  margin-top: clamp(28px, 3vw, 45px);
+  box-shadow: 0 18px 55px rgba(20,20,25,.035);
+  animation: detailIn .3s ease-out both;
+}
+.detailMain { padding: clamp(30px,4.6vw,70px); }
+.detailEyebrow, .asideLabel {
+  color: #c7192a;
+  font-weight: 760;
+  letter-spacing: .15em;
+  font-size: 11px;
+  line-height: 1.5;
+}
+.detailMain h3 {
+  margin: 20px 0 19px;
+  max-width: 620px;
+  font-size: clamp(30px,3.3vw,49px);
+  line-height: 1.095;
+  letter-spacing: -.059em;
+  font-weight: 750;
+}
+.overview { color: #6b6c73; max-width: 600px; font-size: clamp(16px,1.35vw,18px); line-height: 1.68; margin: 0; }
+.outcome {
+  padding: 20px 0 0;
+  border-top: 1px solid #e9e9ec;
+  margin: clamp(26px,3vw,45px) 0 0;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #34343a;
+  font-weight: 590;
+}
+.outcome span { color: #c7192a; display: block; font-weight: 760; letter-spacing: .14em; font-size: 10px; margin-bottom: 7px; }
+.detailAside {
+  background: #fdfcfc;
+  border-left: 1px solid #efeff1;
+  padding: clamp(30px,4.3vw,64px);
+}
+.asideLabel { display: block; margin: 3px 0 22px; color: #66666e; }
+.detailAside ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 20px; }
+.detailAside li { position: relative; padding: 0 0 0 18px; color: #4b4b52; font-size: clamp(15px,1.24vw,17px); line-height: 1.59; }
+.detailAside li::before { content: ""; position: absolute; width: 6px; height: 6px; border-radius: 50%; left: 0; top: .64em; background: #c7192a; }
+.roadmapNote { margin: 25px 0 0; padding-top: 17px; border-top: 1px solid #ebebef; display: flex; align-items: baseline; gap: 9px; font-size: 12px; color: #84848a; line-height: 1.6; }
+.roadmapDot { background: #c7192a; border-radius: 50%; height: 6px; width: 6px; flex-shrink: 0; }
+@keyframes detailIn { from { opacity: .6; transform: translateY(7px); } to { opacity: 1; transform: none; } }
+
+@media (max-width: 900px) {
+  .detail { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .stage { padding-right: 10px; }
+  .stageTeaser { font-size: 13px; }
+}
+@media (max-width: 680px) {
+  .timeline { grid-template-columns: 1fr 1fr; gap: 28px 15px; margin-top: 45px; }
+  .timeline::before { display: none; }
+  .circle { height: 54px; width: 54px; }
+  .stageTitle { margin-top: 15px; font-size: 23px; }
+  .stageTeaser { margin-top: 6px; font-size: 13px; max-width: 160px; }
+  .detail { grid-template-columns: 1fr; margin-top: 25px; border-radius: 15px; }
+  .detailMain { padding: 28px 24px 29px; }
+  .detailMain h3 { font-size: clamp(29px,7.4vw,40px); margin-top: 14px; }
+  .overview { font-size: 16px; }
+  .outcome { margin-top: 27px; }
+  .detailAside { border-left: 0; border-top: 1px solid #efeff1; padding: 28px 24px 30px; }
+  .detailAside ul { gap: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .circle, .stageTitle { transition: none; }
+  .detail { animation: none; }
+}

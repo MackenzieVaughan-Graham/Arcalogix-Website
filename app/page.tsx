@@ -5,6 +5,7 @@ import PlatformJourney from "@/components/PlatformJourney";
 import { ContactButton } from "@/components/ContactProvider";
 import ServicesScrollScene from "@/components/ServicesScrollScene";
 import ScrollEnhancer from "@/components/ScrollEnhancer";
+import ConnectedLifecycle from "@/components/ConnectedLifecycle";
 
 export default function Home() {
   return (
@@ -83,20 +84,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* VISION */}
-        <section className="continuum-section section-pad" aria-labelledby="continuum-heading">
-          <div className="page-shell">
-            <p className="eyebrow">05 / A CONNECTED SPACE LIFECYCLE</p>
-            <div className="continuum-intro"><h2 id="continuum-heading">The floor plan is the beginning.<br /><span>Not the final deliverable.</span></h2><p>Keep the spatial record useful as a site moves from consideration to occupation and, ultimately, to its next change.</p></div>
-            <div className="continuum-line">
-              <div><span className="continuum-node">01</span><h3>Evaluate</h3><p>Understand the existing space</p></div>
-              <div><span className="continuum-node">02</span><h3>Plan</h3><p>Test options against standards</p></div>
-              <div><span className="continuum-node">03</span><h3>Deliver</h3><p>Coordinate design and permitting</p></div>
-              <div><span className="continuum-node">04</span><h3>Operate</h3><p>Extend to digital twins and IoT</p></div>
-            </div>
-            <div className="continuum-note"><span className="status-dot" /> CURRENT FOUNDATION: intake, spatial modelling and test fitting <span className="continuum-divider">/</span> EXPANDING: documentation, portfolio operations and IoT</div>
-          </div>
-        </section>
+        {/* CONNECTED SPACE LIFECYCLE: four selectable stages */}
+        <ConnectedLifecycle />
 
         {/* FINAL CALL TO ACTION */}
         <section className="final-cta" aria-labelledby="final-heading">
