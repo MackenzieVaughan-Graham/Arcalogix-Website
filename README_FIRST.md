@@ -1,22 +1,20 @@
-# Arcalogix platform scroll and services cleanup
+Arcalogix Website — Section 01 / The Platform image update
 
-## Recommended installation
+Files included:
+- components/PlatformJourney.tsx
+- app/globals.css
+- public/images/platform-floorplan.png
+- public/images/platform-model-shell.png
+- public/images/platform-furnished-model.png
 
-Copy only these three files over your existing Arcalogix Next.js project:
+What changed:
+- Replaced the right-side preview images in Section 01 / The Platform.
+- Mapped the new images to steps 01, 02, and 03.
+- Added framing/styling so the images blend into the website rather than appearing pasted on.
+- Preserved the Step 04 illustrative intelligence view.
 
-1. `components/PlatformJourney.tsx`
-2. `components/ServicesScrollScene.tsx`
-3. `app/globals.css`
-
-Test: `npm run dev`, scroll through **01 / The Platform** and **03 / Platform + Services**.
-Production check: `npm run build`.
-
-Deploy:
-
-```bash
-git add components/PlatformJourney.tsx components/ServicesScrollScene.tsx app/globals.css
-git commit -m "Stabilize platform story and simplify service indicators"
-git push origin main
-```
-
-The full-source archive is a reconstructed local copy; it has not been fetched directly from the live GitHub repository.
+Install:
+1. Open your existing Arcalogix website project in VS Code.
+2. Copy these files into the matching folders in your project and replace the existing files.
+3. Run npm run dev and review Section 01.
+4. Commit and push through GitHub.

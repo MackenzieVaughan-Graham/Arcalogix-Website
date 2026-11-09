@@ -9,8 +9,8 @@ const steps = [
     label: "CAPTURE",
     title: "Begin with a floor plan.",
     body: "Bring existing drawings into one workspace. We turn static information into a structured starting point for each space.",
-    image: "/images/floor-plan.webp",
-    alt: "Architectural floor plan used as a starting document",
+    image: "/images/platform-floorplan.png",
+    alt: "2D architectural floor plan used as the starting document for spatial modelling",
     previewLabel: "SOURCE DOCUMENT",
   },
   {
@@ -18,8 +18,8 @@ const steps = [
     label: "STRUCTURE",
     title: "Build a usable spatial model.",
     body: "Connect geometry, room information, and building context to a Spatial Intelligence Model instead of restarting from the last PDF.",
-    image: "/images/existing-space.webp",
-    alt: "Structured spatial model of an existing building interior",
+    image: "/images/platform-model-shell.png",
+    alt: "Early-stage 3D building shell developed from a verified floor plan",
     previewLabel: "SPATIAL MODEL",
   },
   {
@@ -27,8 +27,8 @@ const steps = [
     label: "STANDARDIZE",
     title: "Test every option against your standards.",
     body: "Apply the same workplace rules and space requirements to test fits, comparisons, and future build-out plans across locations.",
-    image: "/images/portfolio-model.webp",
-    alt: "Rendered office layout showing spaces and planning relationships",
+    image: "/images/platform-furnished-model.png",
+    alt: "Detailed spatial model showing a developed test fit aligned to customer standards",
     previewLabel: "MODEL-BASED TEST FIT",
   },
   {
@@ -184,9 +184,17 @@ export default function PlatformJourney() {
           <div className="journey-preview-col">
             <div className="journey-preview">
               <div className="preview-header"><span className="preview-status"><i /> SPATIAL RECORD</span><span>ARCALOGIX / PLATFORM</span></div>
-              <div className="preview-window" key={active}>
+              <div className={`preview-window${steps[active].image ? " preview-window-scene" : ""} preview-window-step-${steps[active].number}`} key={active}>
                 {steps[active].image ? (
-                  <Image src={steps[active].image} alt={steps[active].alt} fill sizes="(max-width: 900px) 95vw, 55vw" />
+                  <div className="preview-scene-wrap">
+                    <Image
+                      src={steps[active].image}
+                      alt={steps[active].alt}
+                      fill
+                      sizes="(max-width: 900px) 95vw, 55vw"
+                      className="preview-scene-image"
+                    />
+                  </div>
                 ) : <IllustrativeIntelligence />}
               </div>
               <div className="preview-footer"><span>{steps[active].previewLabel}</span><div className="preview-progress">{steps.map((step, i) => <i key={step.number} className={i === active ? "current" : ""} />)}</div><span>{steps[active].number} / 04</span></div>
