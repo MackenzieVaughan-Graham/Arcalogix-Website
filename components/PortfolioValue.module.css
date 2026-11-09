@@ -1,0 +1,158 @@
+
+.section { padding: clamp(96px, 10vw, 155px) 0; background: #fff; }
+.intro { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(270px, .7fr); align-items: end; gap: clamp(34px, 5vw, 88px); margin-bottom: clamp(44px, 5vw, 75px); }
+.intro h2 { margin: 0; font-size: clamp(44px, 5.25vw, 82px); line-height: 1.065; font-weight: 765; letter-spacing: -.069em; }
+.intro h2 span { color: #93949d; }
+.introAside { padding-bottom: 4px; }
+.asideRule { display: block; width: 49px; height: 3px; background: #c7192a; margin-bottom: 25px; }
+.introAside p { color: #74767e; line-height: 1.64; font-size: clamp(16px, 1.37vw, 19px); margin: 0 0 17px; }
+.introAside p:last-child { margin-bottom: 0; }
+.introAside strong { font-weight: 670; color: #303138; }
+
+/* The shared foundation is part of the white editorial page, not a boxed widget. */
+.system { background: transparent; }
+.systemHeading {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  padding: 18px 0;
+  border-top: 1px solid #e5e5e9;
+  border-bottom: 1px solid #e5e5e9;
+  color: #91939b;
+  font-size: 10px;
+  font-weight: 790;
+  letter-spacing: .16em;
+}
+.foundationScene { padding: clamp(20px, 2.6vw, 38px) 0 10px; }
+.sceneCanvas {
+  position: relative;
+  min-height: clamp(550px, 53vw, 690px);
+  isolation: isolate;
+  background: #fff;
+  overflow: hidden;
+}
+.modelBackdrop {
+  position: absolute;
+  inset: 3% -2% 7%;
+  z-index: 0;
+  pointer-events: none;
+}
+.modelImage {
+  object-fit: contain;
+  object-position: center;
+  filter: saturate(.88);
+}
+.floatCard {
+  position: absolute;
+  z-index: 2;
+  width: clamp(208px, 23vw, 275px);
+  padding: clamp(17px, 1.8vw, 24px);
+  border-radius: 13px;
+  background: rgba(255,255,255,.94);
+  border: 1px solid rgba(225,226,231,.95);
+  box-shadow: 0 12px 42px rgba(24,25,31,.08);
+  backdrop-filter: blur(8px);
+}
+.floatNumber {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 10px;
+  letter-spacing: .14em;
+  font-weight: 790;
+  color: #c7192a;
+}
+.floatCard strong {
+  display: block;
+  font-size: clamp(18px, 1.55vw, 23px);
+  letter-spacing: -.045em;
+  line-height: 1.18;
+  color: #27282d;
+  font-weight: 750;
+}
+.floatCard p {
+  margin: 10px 0 0;
+  color: #777980;
+  font-size: 13px;
+  line-height: 1.55;
+}
+.peopleCard { top: 4%; left: 2%; }
+.placeCard { top: 17%; right: 2%; }
+.policyCard { bottom: 11%; left: 6%; }
+.sceneSignature {
+  position: absolute;
+  bottom: 3%;
+  right: 2%;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  color: #8a8c94;
+  letter-spacing: .14em;
+  font-weight: 770;
+  font-size: 10px;
+}
+.sceneSignature span { display: block; background: #c7192a; width: 7px; height: 7px; border-radius: 50%; flex: 0 0 auto; }
+
+.outcomes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 24px;
+  padding: clamp(27px, 3vw, 43px) 0 0;
+  margin-top: clamp(12px, 2.4vw, 32px);
+  border-top: 1px solid #e6e6ea;
+}
+.outcome { display: grid; gap: 10px; align-content: start; }
+.outcome > span { color: #bf2031; font-size: 11px; font-weight: 780; }
+.outcome strong { color: #33353d; font-size: clamp(17px, 1.5vw, 21px); font-weight: 740; letter-spacing: -.035em; }
+.outcome p { margin: 0; color: #81828b; font-size: 13px; line-height: 1.56; max-width: 300px; }
+
+@media (max-width: 1080px) {
+  .sceneCanvas { min-height: 610px; }
+  .floatCard { width: 225px; padding: 18px; }
+  .peopleCard { top: 3%; left: 1%; }
+  .placeCard { top: 17%; right: 1%; }
+  .policyCard { bottom: 9%; left: 2%; }
+}
+@media (max-width: 900px) {
+  .intro { grid-template-columns: 1fr; align-items: start; gap: 26px; }
+  .introAside { max-width: 790px; }
+  .sceneCanvas {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 14px;
+    min-height: 0;
+    overflow: visible;
+  }
+  .modelBackdrop { position: relative; inset: auto; grid-column: 1 / -1; height: auto; aspect-ratio: 1.9; }
+  .floatCard {
+    position: relative;
+    inset: auto;
+    width: auto;
+    min-width: 0;
+    box-shadow: 0 8px 27px rgba(24,25,31,.04);
+    background: #fff;
+  }
+  .floatCard strong { font-size: 18px; }
+  .sceneSignature { position: relative; inset: auto; grid-column: 1 / -1; justify-content: flex-end; padding: 10px 0; }
+  .outcomes { gap: 17px; }
+}
+@media (max-width: 680px) {
+  .section { padding: 80px 0; }
+  .intro h2 { font-size: clamp(39px, 10vw, 54px); }
+  .systemHeading { padding: 17px 0; font-size: 8px; }
+  .foundationScene { padding-top: 16px; }
+  .sceneCanvas { grid-template-columns: 1fr; gap: 10px; }
+  .modelBackdrop { grid-column: 1; aspect-ratio: 1.58; }
+  .floatCard { grid-column: 1; padding: 17px 19px; }
+  .floatNumber { margin-bottom: 8px; }
+  .floatCard p { margin-top: 7px; }
+  .sceneSignature { grid-column: 1; justify-content: flex-start; font-size: 8px; }
+  .outcomes { padding-top: 30px; grid-template-columns: 1fr; gap: 23px; }
+  .outcome { grid-template-columns: 23px 1fr; gap: 5px 10px; }
+  .outcome > span { grid-row: span 2; }
+  .outcome p { max-width: 380px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .floatCard { backdrop-filter: none; }
+}

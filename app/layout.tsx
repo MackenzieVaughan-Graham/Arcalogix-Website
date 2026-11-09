@@ -6,13 +6,13 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Arcalogix | Spatial Intelligence for Enterprise Real Estate",
   description:
-    "Standardize your real estate portfolio with spatial models, test fits, design delivery, and the foundation for portfolio intelligence and digital twins.",
+    "Connect people, place and policy across your real estate portfolio. Evaluate properties, reuse spatial information, apply consistent standards and extend models from planning to operations.",
   applicationName: "Arcalogix",
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Arcalogix | One portfolio. Better decisions.",
+    title: "Arcalogix | Every Space. One Strategy.",
     description:
-      "From floor plans to connected spatial intelligence. Standardize, test fit, design, and plan the future of your spaces.",
+      "One spatial intelligence platform connecting the information, people and decisions across enterprise real estate portfolios.",
     type: "website",
   },
 };

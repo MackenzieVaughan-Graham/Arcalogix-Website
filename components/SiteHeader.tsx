@@ -6,11 +6,11 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import styles from "./SiteHeader.module.css";
 
-// Only the three homepage-section links are scroll anchors.
+// Homepage section links point to the updated enterprise storyline.
 // About is a separate PAGE, never a #about anchor or Next.js soft-scroll link.
 const links = [
-  { href: "/#platform", label: "Platform" },
-  { href: "/#standards", label: "Standards" },
+  { href: "/#platform", label: "The Platform" },
+  { href: "/#ecosystem", label: "Who It Connects" },
   { href: "/#services", label: "Services" },
 ] as const;
 

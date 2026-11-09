@@ -9,14 +9,8 @@ export default function ScrollEnhancer() {
     if (reduce.matches || !("IntersectionObserver" in window)) return;
     const elements = document.querySelectorAll<HTMLElement>([
       ".hero-visual",
-      ".principle-grid > div",
-      ".standards-heading-grid",
-      ".standard-card",
-      ".standards-bottom",
-      ".delivery-content",
-      ".continuum-intro",
-      ".continuum-line > div",
-      ".continuum-note",
+      ".journey-heading",
+      ".simplified-final-cta .final-cta-inner",
       ".final-cta-inner",
     ].join(", "));
     const observer = new IntersectionObserver((entries) => {
