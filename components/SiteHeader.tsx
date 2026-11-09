@@ -82,7 +82,7 @@ export default function SiteHeader() {
             About Us
           </a>
           {/* On phones, Submit comes first, followed by Sign In. */}
-          <a className="button button-primary mobile-nav-cta" href="https://arcalogixdashboard.com/general-submit-project" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Submit a new project <span aria-hidden="true">↗</span></a>
+          <a className="button button-primary mobile-nav-cta" href="https://arcalogixdashboard.com/general-submit-project" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Submit a new project</a>
           <a
             className={`${styles.mobileSignIn} button button-secondary`}
             href="https://arcalogixdashboard.com/login"
@@ -90,19 +90,19 @@ export default function SiteHeader() {
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
           >
-            Sign In <span aria-hidden="true">↗</span>
+            Sign In
           </a>
         </nav>
         {/* Desktop/tablet: Submit a new project sits immediately LEFT of Sign In. */}
         <div className={styles.headerActions}>
-          <a className="button button-primary header-cta" href="https://arcalogixdashboard.com/general-submit-project" target="_blank" rel="noopener noreferrer">Submit a new project <span aria-hidden="true">↗</span></a>
+          <a className="button button-primary header-cta" href="https://arcalogixdashboard.com/general-submit-project" target="_blank" rel="noopener noreferrer">Submit a new project</a>
           <a
             className={`button button-secondary ${styles.signInButton}`}
             href="https://arcalogixdashboard.com/login"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Sign In <span aria-hidden="true">↗</span>
+            Sign In
           </a>
         </div>
         <button type="button" className={`menu-toggle ${menuOpen ? "menu-active" : ""}`} aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={menuOpen ? "Close navigation" : "Open navigation"} onClick={() => setMenuOpen((value) => !value)}>

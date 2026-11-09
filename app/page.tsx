@@ -24,8 +24,8 @@ export default function Home() {
             <h1 id="hero-title">Every space.<br /><span>One strategy.</span></h1>
             <p className="hero-lede">Better real estate decisions start with a connected spatial portfolio. Standardize your spaces, test fit to your requirements, and move from planning to delivery with one platform and one team.</p>
             <div className="hero-actions">
-              <ContactButton className="button button-primary button-large">Discuss your portfolio <span aria-hidden="true">↗</span></ContactButton>
-              <a href="#platform" className="button button-secondary button-large">Explore the platform <span aria-hidden="true">↓</span></a>
+              <ContactButton className="button button-primary button-large">Discuss your portfolio</ContactButton>
+              <a href="#platform" className="button button-secondary button-large">Explore the platform</a>
             </div>
             <div className="hero-visual" aria-label="Illustrative spatial model experience">
               <div className="hero-visual-topline"><span><i /> ARCALOGIX / SPATIAL PLATFORM</span><span>FROM MODEL TO DECISION</span></div>
@@ -56,7 +56,7 @@ export default function Home() {
         <section id="standards" className="standards-section section-pad" aria-labelledby="standards-heading">
           <div className="page-shell">
             <div className="standards-heading-grid">
-              <div><p className="eyebrow">02 / STANDARDIZATION</p><h2 id="standards-heading">Your standards shouldn&apos;t reset<br /><span>at every new address.</span></h2></div>
+              <div><p className="eyebrow">02 / STANDARDIZATION</p><h2 id="standards-heading">Your standards <em className="standards-heading-accent">shouldn&apos;t</em><br /><span>reset at every new address.</span></h2></div>
               <p>Every move, refresh, or lease decision needs the same inputs. Arcalogix helps you build a reusable spatial standard so teams evaluate different properties on common terms.</p>
             </div>
             <div className="standards-cards">
@@ -79,7 +79,7 @@ export default function Home() {
             <p className="eyebrow">04 / GLOBAL PORTFOLIOS, CONSISTENT SERVICE</p>
             <h2 id="delivery-heading">One relationship.<br /><em>Every next location.</em></h2>
             <p>Arcalogix combines a shared spatial platform with an internal design team. We help occupiers maintain consistent project standards and coordinate delivery across their portfolios, with locally qualified professionals involved where required.</p>
-            <ContactButton className="button button-light">Plan your next location <span aria-hidden="true">↗</span></ContactButton>
+            <ContactButton className="button button-light">Plan your next location</ContactButton>
           </div>
         </section>
 
@@ -101,7 +101,7 @@ export default function Home() {
         {/* FINAL CALL TO ACTION */}
         <section className="final-cta" aria-labelledby="final-heading">
           <div className="final-cta-ghost" aria-hidden="true">NEXT.</div>
-          <div className="page-shell final-cta-inner"><p className="eyebrow">START WITH ONE LOCATION. THINK PORTFOLIO-WIDE.</p><h2 id="final-heading">Make your next space<br /><span>a better decision.</span></h2><p>Tell us what you&apos;re planning. We&apos;ll help you identify the right place to begin—with a test fit, a spatial model, or a broader portfolio standard.</p><ContactButton className="button button-primary button-large">Talk to the Arcalogix team <span aria-hidden="true">↗</span></ContactButton></div>
+          <div className="page-shell final-cta-inner"><p className="eyebrow">START WITH ONE LOCATION. THINK PORTFOLIO-WIDE.</p><h2 id="final-heading">Make your next space<br /><span>a better decision.</span></h2><p>Tell us what you&apos;re planning. We&apos;ll help you identify the right place to begin—with a test fit, a spatial model, or a broader portfolio standard.</p><ContactButton className="button button-primary button-large">Talk to the Arcalogix team</ContactButton></div>
         </section>
         <ScrollEnhancer />
       </main>

@@ -214,7 +214,7 @@ export function ContactProvider({ children }: { children: ReactNode }) {
                     <span>I agree to be contacted about this enquiry and understand how my information is used under the <Link href="/privacy" onClick={() => setOpen(false)}>privacy notice</Link>.</span>
                   </label>
                   {error && <p className="form-error" role="alert">{error}</p>}
-                  <button type="submit" className="button button-primary form-submit" disabled={submitting}>{submitting ? "Sending…" : "Send enquiry"}<span aria-hidden="true">↗</span></button>
+                  <button type="submit" className="button button-primary form-submit" disabled={submitting}>{submitting ? "Sending…" : "Send enquiry"}</button>
                 </form>
               </>
             )}

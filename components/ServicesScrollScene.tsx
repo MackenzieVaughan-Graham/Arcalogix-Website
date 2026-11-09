@@ -11,7 +11,7 @@ const services = [
     description: "See how a potential or existing space fits your requirements before committing. Our design team applies your workplace standards to each test fit.",
     priceQualifier: "PER PROJECT", price: "$0.15", priceUnit: "/ sq ft",
     priceDetail: "Includes 2 free iterations per project",
-    items: ["Standards-based test fitting", "Space planning and layout options", "Two included iterations"],
+    items: ["Standards-based test fitting", "Space planning and layout options", "Two included iterations", "12 months of SIM hosting included"],
     image: "/images/portfolio-model.webp",
     imageDescription: "3D office model used for workplace test-fit planning",
     interest: "Test fits and planning",
@@ -41,7 +41,7 @@ const services = [
     description: "Extend the spatial record into occupied-space operations with connected sensor and asset information as those capabilities are implemented.",
     priceQualifier: "CONNECTED OPERATIONS FROM", price: "$10", priceUnit: "/ device / month",
     priceDetail: "Starting price per connected device",
-    items: ["Digital twin foundations", "Optional IoT occupancy and environmental inputs", "Space and asset context"],
+    items: ["Digital twin foundations", "Optional IoT occupancy and environmental inputs", "Space and asset context", "Active SIM hosting required for this service"],
     image: "/images/iot-asset-diagram.svg",
     imageDescription: "Illustrative floor-plan sensor and asset connection schematic",
     interest: "Digital twins and IoT",
@@ -135,11 +135,11 @@ export default function ServicesScrollScene() {
                   <ul className="service-includes">{service.items.map((item) => <li key={item}>{item}</li>)}</ul>
                   {index === 0 ? (
                     <a href={PROJECT_URL} target="_blank" rel="noopener noreferrer" className="service-link">
-                      Submit a project <span aria-hidden="true">↗</span>
+                      Submit a project
                     </a>
                   ) : (
                     <ContactButton className="service-link" interest={service.interest}>
-                      Discuss this service <span aria-hidden="true">↗</span>
+                      Discuss this service
                     </ContactButton>
                   )}
                 </article>

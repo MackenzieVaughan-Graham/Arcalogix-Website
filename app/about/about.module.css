@@ -81,7 +81,7 @@
 .invitation p:not(:global(.eyebrow)) { max-width: 780px; margin: 28px 0 0; font-size: 17px; line-height: 1.72; color: #c0c1ca; }
 .invitation small { display: block; max-width: 740px; margin-top: 21px; color: #91939f; font-size: 11px; line-height: 1.6; }
 .invitationActions { display: grid; gap: 12px; padding-bottom: 6px; }
-.primaryAction,.secondaryAction { min-height: 58px; display: flex; align-items: center; justify-content: space-between; gap: 18px; font-size: 14px; font-weight: 750; line-height: 1.4; padding: 15px 23px; border-radius: 40px; transition: background .2s ease,transform .2s ease; }
+.primaryAction,.secondaryAction { min-height: 58px; display: flex; align-items: center; justify-content: center; gap: 18px; font-size: 14px; font-weight: 750; line-height: 1.4; padding: 15px 23px; border-radius: 40px; transition: background .2s ease,transform .2s ease; }
 .primaryAction { color: #18191d; background: #fff; }
 .secondaryAction { color: #fff; background: #c7192a; }
 .primaryAction:hover,.secondaryAction:hover { transform: translateY(-2px); }
@@ -187,14 +187,14 @@
 .contactConsent { display: flex; align-items: flex-start; gap: 11px; color: #777982; font-size: 12px; line-height: 1.65; cursor: pointer; }
 .contactConsent input { accent-color: var(--red); width: 17px; height: 17px; flex-shrink: 0; margin-top: 2px; }
 .contactConsent a { text-decoration: underline; text-underline-offset: 2px; }
-.contactSubmit { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 20px; background: var(--red); color: #fff; border-radius: 11px; border: 0; font-size: 14px; font-weight: 745; cursor: pointer; }
+.contactSubmit { width: 100%; display: flex; align-items: center; justify-content: center; gap: 16px; padding: 16px 20px; background: var(--red); color: #fff; border-radius: 11px; border: 0; font-size: 14px; font-weight: 745; cursor: pointer; }
 .contactSubmit:hover { background: #ac1726; }
 .contactSubmit:disabled { opacity: .6; cursor: progress; }
 .contactError { color: #ad1224; background: #fff0f2; border: 1px solid #f5ccd2; padding: 12px; border-radius: 9px; line-height: 1.5; font-size: 13px; }
 .contactSuccess p { color: #6a6c73; line-height: 1.7; }
 .contactSuccess button { margin-top: 18px; border: 1px solid #dbdce1; background: #f7f7f8; color: #33343a; padding: 12px 22px; border-radius: 999px; cursor: pointer; font-size: 13px; font-weight: 750; }
 @media (max-width: 600px) {
-  .contactOpenButton { width:100%; justify-self:stretch; justify-content:space-between; }
+  .contactOpenButton { width:100%; justify-self:stretch; justify-content:center; }
   .contactDialog { border-radius: 16px; padding: 33px 22px; }
   .contactGrid { grid-template-columns: 1fr; }
 }

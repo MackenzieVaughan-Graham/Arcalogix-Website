@@ -1,0 +1,34 @@
+ARCALOGIX WEBSITE — FAVICON, BUTTONS, STANDARDIZATION & SERVICES
+Source: user's uploaded Arcalogix-Website.zip (November 2026)
+
+IMPORTANT: THIS ZIP IS AN IN-PLACE UPDATE FOR YOUR EXISTING NEXT.JS REPOSITORY.
+Copy the app/ and components/ folders into your existing website repository,
+allowing the 9 existing text files to be overwritten and 2 new favicon files
+(icon.png and favicon.ico) to be added. app/icon.svg is also replaced.
+
+CHANGES
+1) Browser tab / favicon: supplied red Ax logo, using matching
+   app/icon.svg, app/icon.png and app/favicon.ico. Header and footer brand
+   logos are unchanged.
+2) Removed arrow glyphs from interactive buttons and CTA links throughout
+   homepage, header, About Us and contact forms. Informational arrows in
+   labels/illustrations are retained.
+3) Standardization heading: "Your standards shouldn't" ("shouldn't" red)
+   / "reset at every new address." Forced to two lines with responsive type.
+4) Test fitting: bullet "12 months of SIM hosting included".
+5) Operations: bullet "Active SIM hosting required for this service".
+
+INSTALL
+1) In VS Code, open the Arcalogix marketing website repository.
+2) Extract this ZIP. Copy the app/ and components/ directories into the
+   matching paths in the repo; choose overwrite for the files in this update.
+3) Run npm run typecheck and npm run dev (or npm run build) in your repo.
+4) Test the homepage, About page, all CTAs, and favicon in a new browser tab.
+5) Commit and push changes to GitHub; Vercel will deploy the updated files.
+
+The browser can cache favicons. After deploy, hard-refresh or open an incognito
+window; Google Search result favicon updates can take longer to propagate.
+
+No API routes, environment settings or existing link destinations were changed.
+The other ZIP, Arcalogix_Website_Updated_Clean_Source.zip, contains the full
+website source without bulky generated node_modules, .next or .git folders.

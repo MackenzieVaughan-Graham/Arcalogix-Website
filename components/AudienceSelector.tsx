@@ -44,7 +44,7 @@ export default function AudienceSelector() {
           <div className="audience-tabs" role="group" aria-label="Choose your organization type">
             {audiences.map((a, index) => (
               <button type="button" key={a.label} aria-pressed={selected === index} aria-controls="audience-content" className={selected === index ? "audience-tab audience-tab-active" : "audience-tab"} onClick={() => setSelected(index)}>
-                <span>0{index + 1}</span>{a.label}<span aria-hidden="true">↗</span>
+                <span>0{index + 1}</span>{a.label}
               </button>
             ))}
           </div>
@@ -53,7 +53,7 @@ export default function AudienceSelector() {
             <h3>{active.heading}</h3>
             <p>{active.copy}</p>
             <ul>{active.points.map((point) => <li key={point}><span aria-hidden="true">↗</span>{point}</li>)}</ul>
-            <ContactButton interest={active.interest} className="text-link">Discuss your requirements <span aria-hidden="true">↗</span></ContactButton>
+            <ContactButton interest={active.interest} className="text-link">Discuss your requirements</ContactButton>
           </div>
         </div>
       </div>

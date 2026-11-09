@@ -136,7 +136,10 @@ img { max-width: 100%; }
 
 /* Standards */
 .standards-section { background: #f7f7f8; }
-.standards-heading-grid { display: grid; grid-template-columns: 1.3fr .7fr; align-items: end; gap: 50px; margin-bottom: 52px; }
+.standards-heading-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(0, .7fr); align-items: end; gap: 46px; margin-bottom: 52px; }
+.standards-heading-grid h2 { font-size: clamp(36px, 4.25vw, 68px); }
+.standards-heading-grid h2 span { white-space: nowrap; }
+.standards-heading-grid h2 .standards-heading-accent { color: var(--red); font-style: normal; }
 .standards-heading-grid > p { color: #73757b; font-size: 19px; letter-spacing: -.02em; line-height: 1.6; max-width: 380px; margin: 0 0 5px auto; }
 .standards-cards { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 14px; }
 .standard-card { min-height: 385px; background: #fff; padding: clamp(25px, 3vw, 45px); border: 1px solid #e8e8eb; border-radius: 18px; display: flex; flex-direction: column; }
@@ -280,7 +283,7 @@ img { max-width: 100%; }
 .form-consent { display: flex !important; grid-template-columns: unset !important; align-items: start; gap: 12px !important; color: #76777e !important; font-weight: 430 !important; font-size: 12px !important; line-height: 1.6; }
 .form-consent input { accent-color: var(--red); margin: 3px 0 0; }
 .form-consent a { color: var(--red); text-decoration: underline; }
-.form-submit { border-radius: 11px; font-size: 14px; padding: 16px 22px; justify-content: space-between; }
+.form-submit { border-radius: 11px; font-size: 14px; padding: 16px 22px; justify-content: center; }
 .form-submit:disabled { opacity: .6; cursor: wait; }
 .form-error { color: #b01c2a; background: #fff0f1; border: 1px solid #ffdade; border-radius: 9px; padding: 12px; margin: 0; font-size: 13px; }
 .offscreen-trap { position: absolute; left: -99999px; width: 1px; height: 1px; overflow: hidden; }
@@ -324,6 +327,7 @@ img { max-width: 100%; }
   .journey-step h3 { font-size: clamp(33px,4.5vw,48px); }
   .journey-preview-col { top: calc(var(--header-height) + 22px); }
   .standards-heading-grid, .continuum-intro { grid-template-columns: 1fr; gap: 23px; }
+  .standards-heading-grid h2 { font-size: clamp(38px, 6.25vw, 60px); }
   .standards-heading-grid > p, .continuum-intro p { margin: 0; max-width: 650px; }
   .standard-card { padding: 27px; min-height: 360px; }
   .standard-card h3 { font-size: 23px; }
@@ -386,6 +390,7 @@ img { max-width: 100%; }
   .journey-step h3 { margin: 14px 0 13px; font-size: 38px; }
   .journey-step p { font-size: 16px; }
   .standards-heading-grid { gap: 18px; margin-bottom: 35px; }
+  .standards-heading-grid h2 { font-size: clamp(20px, 6vw, 43px); letter-spacing: -.065em; }
   .standards-heading-grid > p { font-size: 17px; }
   .standards-cards { grid-template-columns: 1fr; }
   .standard-card { min-height: 285px; }

@@ -129,7 +129,7 @@ export default function AboutContactForm() {
         aria-expanded={open}
         onClick={openForm}
       >
-        Request a chat or demo <span aria-hidden="true">↗</span>
+        Request a chat or demo
       </button>
       {mounted && open && createPortal(
         <div
@@ -195,7 +195,7 @@ export default function AboutContactForm() {
                   </label>
                   {error && <p className={styles.contactError} role="alert">{error}</p>}
                   <button className={styles.contactSubmit} type="submit" disabled={sending || !consent}>
-                    {sending ? "Sending your message…" : "Send inquiry"}<span aria-hidden="true">↗</span>
+                    {sending ? "Sending your message…" : "Send inquiry"}
                   </button>
                 </form>
               </>

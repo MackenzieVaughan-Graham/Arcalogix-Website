@@ -73,7 +73,7 @@ export default function AboutPage() {
                 Our purpose is simple: make it easier to share the right information, make informed decisions and carry that understanding through the life of a space.
               </p>
               <a className={styles.heroLink} href="#our-purpose">
-                Get to know us <span aria-hidden="true">↓</span>
+                Get to know us
               </a>
             </div>
 
@@ -185,8 +185,8 @@ export default function AboutPage() {
                 <small>Participation and investment are exploratory. Registration is an expression of interest only; no securities are being offered and no payment is requested.</small>
               </div>
               <div className={styles.invitationActions}>
-                <a className={styles.primaryAction} href={destinations.openArcade} target="_blank" rel="noopener noreferrer">Discover openArcade <span aria-hidden="true">↗</span></a>
-                <a className={styles.secondaryAction} href={destinations.openArcadeParticipation} target="_blank" rel="noopener noreferrer">Explore participation / investment <span aria-hidden="true">↗</span></a>
+                <a className={styles.primaryAction} href={destinations.openArcade} target="_blank" rel="noopener noreferrer">Discover openArcade</a>
+                <a className={styles.secondaryAction} href={destinations.openArcadeParticipation} target="_blank" rel="noopener noreferrer">Explore participation / investment</a>
               </div>
             </div>
           </div>
@@ -209,8 +209,8 @@ export default function AboutPage() {
                   <small>For occupiers and customer teams reviewing spaces, submissions, and project deliverables.</small>
                 </div>
                 <div className={styles.accessActions}>
-                  <a href={destinations.customerLogin} target="_blank" rel="noopener noreferrer">Sign in <span aria-hidden="true">↗</span></a>
-                  <a href={destinations.customerSignup} target="_blank" rel="noopener noreferrer">Create account <span aria-hidden="true">↗</span></a>
+                  <a href={destinations.customerLogin} target="_blank" rel="noopener noreferrer">Sign in</a>
+                  <a href={destinations.customerSignup} target="_blank" rel="noopener noreferrer">Create account</a>
                 </div>
               </div>
               <div className={styles.accessRow}>
@@ -220,8 +220,8 @@ export default function AboutPage() {
                   <small>For architects and AEC professionals developing layouts, working with models, and applying design standards.</small>
                 </div>
                 <div className={styles.accessActions}>
-                  <a href={destinations.authoringLogin} target="_blank" rel="noopener noreferrer">Sign in <span aria-hidden="true">↗</span></a>
-                  <a href={destinations.authoringAccess} target="_blank" rel="noopener noreferrer">Request access <span aria-hidden="true">↗</span></a>
+                  <a href={destinations.authoringLogin} target="_blank" rel="noopener noreferrer">Sign in</a>
+                  <a href={destinations.authoringAccess} target="_blank" rel="noopener noreferrer">Request access</a>
                 </div>
               </div>
               <div className={styles.contactRow}>
