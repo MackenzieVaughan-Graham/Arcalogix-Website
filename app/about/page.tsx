@@ -19,7 +19,7 @@ const destinations = {
   openArcadeParticipation: "https://openarcade-nextjs-starter.vercel.app/ownership#top",
   customerLogin: "https://arcalogixdashboard.com/login",
   customerSignup: "https://arcalogixdashboard.com/create-account",
-  authoringLogin: "https://projects.arcalogix.com/login",
+  authoringLogin: "https://projects.arcalogix.com/",
   authoringAccess: "https://projects.arcalogix.com/",
 } as const;
 
