@@ -1,14 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import styles from "./SiteHeader.module.css";
 
-// Homepage section links point to the updated enterprise storyline.
-// About is a separate PAGE, never a #about anchor or Next.js soft-scroll link.
-const links = [
+const exploreLinks = [
   { href: "/#platform", label: "The Platform" },
   { href: "/#ecosystem", label: "Who It Connects" },
   { href: "/#services", label: "Services" },
@@ -33,7 +30,29 @@ function scrollToTopImmediately() {
 
 export default function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [exploreOpen, setExploreOpen] = useState(false);
+  const exploreRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const closeFromOutside = (event: MouseEvent) => {
+      if (!exploreRef.current?.contains(event.target as Node)) setExploreOpen(false);
+    };
+    const closeFromKeyboard = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setExploreOpen(false);
+    };
+    document.addEventListener("mousedown", closeFromOutside);
+    document.addEventListener("keydown", closeFromKeyboard);
+    return () => {
+      document.removeEventListener("mousedown", closeFromOutside);
+      document.removeEventListener("keydown", closeFromKeyboard);
+    };
+  }, []);
+
+  const closeNavigation = () => {
+    setMenuOpen(false);
+    setExploreOpen(false);
+  };
 
   return (
     <header className="site-header">
@@ -46,7 +65,7 @@ export default function SiteHeader() {
           className="brand-lockup"
           aria-label="Arcalogix home"
           onClick={(event) => {
-            setMenuOpen(false);
+            closeNavigation();
             if (pathname === "/") {
               event.preventDefault();
               scrollToTopImmediately();
@@ -59,17 +78,44 @@ export default function SiteHeader() {
           <span className="brand-descriptor">SPATIAL INTELLIGENCE PLATFORM</span>
         </a>
         <nav className={`header-nav ${menuOpen ? "nav-open" : ""}`} aria-label="Primary navigation" id="primary-navigation">
-          {links.map((link) => (
-            <Link key={link.href} href={link.href} onClick={() => setMenuOpen(false)}>
-              {link.label}
-            </Link>
-          ))}
+          <div className={styles.explore} ref={exploreRef}>
+            <button
+              type="button"
+              className={styles.exploreToggle}
+              aria-expanded={exploreOpen}
+              aria-controls="explore-navigation"
+              onClick={() => setExploreOpen((value) => !value)}
+            >
+              Explore <i aria-hidden="true" />
+            </button>
+            <div id="explore-navigation" className={`${styles.exploreMenu} ${exploreOpen ? styles.exploreMenuOpen : ""}`}>
+              <span>EXPLORE ARCALOGIX</span>
+              {exploreLinks.map((link) => (
+                <a key={link.href} href={link.href} onClick={closeNavigation}>{link.label}<i aria-hidden="true">→</i></a>
+              ))}
+            </div>
+          </div>
+          {/* Native navigation prevents the browser from restoring a previous
+              scroll position on this long-form page. */}
+          <a
+            href="/sim-project"
+            aria-current={pathname === "/sim-project" ? "page" : undefined}
+            onClick={(event) => {
+              closeNavigation();
+              if (pathname === "/sim-project") {
+                event.preventDefault();
+                scrollToTopImmediately();
+              }
+            }}
+          >
+            SIM Project
+          </a>
           {/* Native page link deliberately bypasses Next.js client-side scroll restoration. */}
           <a
             href="/about"
             aria-current={pathname === "/about" ? "page" : undefined}
             onClick={(event) => {
-              setMenuOpen(false);
+              closeNavigation();
               // Re-selecting About while already there should jump to top,
               // not perform a smooth in-page animation.
               if (pathname === "/about") {
@@ -82,13 +128,13 @@ export default function SiteHeader() {
             About Us
           </a>
           {/* On phones, Submit comes first, followed by Sign In. */}
-          <a className="button button-primary mobile-nav-cta" href="https://arcalogixdashboard.com/general-submit-project" target="_blank" rel="noopener noreferrer" onClick={() => setMenuOpen(false)}>Submit a new project</a>
+          <a className="button button-primary mobile-nav-cta" href="https://arcalogixdashboard.com/general-submit-project" target="_blank" rel="noopener noreferrer" onClick={closeNavigation}>Submit a new project</a>
           <a
             className={`${styles.mobileSignIn} button button-secondary`}
             href="https://arcalogixdashboard.com/login"
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => setMenuOpen(false)}
+            onClick={closeNavigation}
           >
             Sign In
           </a>
@@ -105,7 +151,7 @@ export default function SiteHeader() {
             Sign In
           </a>
         </div>
-        <button type="button" className={`menu-toggle ${menuOpen ? "menu-active" : ""}`} aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={menuOpen ? "Close navigation" : "Open navigation"} onClick={() => setMenuOpen((value) => !value)}>
+        <button type="button" className={`menu-toggle ${menuOpen ? "menu-active" : ""}`} aria-expanded={menuOpen} aria-controls="primary-navigation" aria-label={menuOpen ? "Close navigation" : "Open navigation"} onClick={() => { setMenuOpen((value) => !value); setExploreOpen(false); }}>
           <span /><span />
         </button>
       </div>

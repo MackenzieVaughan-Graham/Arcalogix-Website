@@ -19,7 +19,7 @@ const destinations = {
   openArcadeParticipation: "https://openarcade-nextjs-starter.vercel.app/ownership#top",
   customerLogin: "https://arcalogixdashboard.com/login",
   customerSignup: "https://arcalogixdashboard.com/create-account",
-  authoringLogin: "https://projects.arcalogix.com/",
+  authoringLogin: "https://projects.arcalogix.com/login",
   authoringAccess: "https://projects.arcalogix.com/",
 } as const;
 
@@ -247,6 +247,7 @@ export default function AboutPage() {
             <span>© {new Date().getFullYear()} Arcalogix</span>
             <div>
               <Link href="/">Home</Link>
+              <Link href="/sim-project">View a SIM Project</Link>
               <Link href="/about" scroll={false}>About</Link>
               <a href={destinations.openArcade} target="_blank" rel="noopener noreferrer">openArcade</a>
               <Link href="/privacy">Privacy</Link>

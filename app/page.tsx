@@ -80,6 +80,7 @@ export default function Home() {
               <a href="#platform">Platform</a>
               <a href="#ecosystem">Who it connects</a>
               <a href="#services">Services</a>
+              <Link href="/sim-project">View a SIM Project</Link>
               <Link href="/about">About Us</Link>
               <a href="mailto:sales@arcalogix.com">Contact</a>
               <Link href="/privacy">Privacy</Link>

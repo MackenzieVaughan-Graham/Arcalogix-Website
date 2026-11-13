@@ -16,6 +16,98 @@
   display: none;
 }
 
+.explore {
+  position: relative;
+}
+
+.exploreToggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border: 0;
+  background: transparent;
+  color: #65666d;
+  font-size: 13px;
+  font-weight: 630;
+  white-space: nowrap;
+  transition: color .2s ease;
+}
+
+.exploreToggle:hover,
+.exploreToggle[aria-expanded="true"] {
+  color: var(--red);
+}
+
+.exploreToggle > i {
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform .2s ease;
+}
+
+.exploreToggle[aria-expanded="true"] > i {
+  transform: translateY(2px) rotate(225deg);
+}
+
+.exploreMenu {
+  position: absolute;
+  z-index: 120;
+  top: calc(100% + 16px);
+  left: 50%;
+  width: 250px;
+  padding: 13px;
+  border: 1px solid #e5e5e8;
+  border-radius: 15px;
+  background: rgba(255,255,255,.98);
+  box-shadow: 0 24px 65px rgba(20,20,24,.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -8px);
+  transition: opacity .2s ease, transform .2s ease, visibility .2s ease;
+}
+
+.exploreMenuOpen {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.exploreMenu > span {
+  display: block;
+  padding: 9px 10px 11px;
+  color: #a0a1a7;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.exploreMenu > a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 13px 11px;
+  border-radius: 9px;
+  color: #303137;
+  font-size: 14px;
+  font-weight: 680;
+  transition: color .2s ease, background .2s ease;
+}
+
+.exploreMenu > a:hover {
+  color: var(--red);
+  background: #f7f7f8;
+}
+
+.exploreMenu > a i {
+  color: #b4b5ba;
+  font-size: 11px;
+  font-style: normal;
+}
+
 @media (max-width: 1150px) {
   .headerActions {
     gap: 9px;
@@ -25,11 +117,54 @@
     padding: 12px 15px;
     font-size: 12px;
   }
+
+  .exploreToggle {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 900px) {
   .headerActions {
     margin-left: auto;
+  }
+
+  .explore {
+    border-bottom: 1px solid #eee;
+  }
+
+  .exploreToggle {
+    width: 100%;
+    justify-content: space-between;
+    padding: 17px 0;
+    color: #65666d;
+    font-size: 18px;
+  }
+
+  .exploreMenu,
+  .exploreMenuOpen {
+    position: static;
+    width: 100%;
+    padding: 0 0 13px 14px;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    display: none;
+  }
+
+  .exploreMenuOpen {
+    display: block;
+  }
+
+  .exploreMenu > span {
+    display: none;
+  }
+
+  .exploreMenu > a {
+    padding: 11px 8px;
+    font-size: 15px;
   }
 }
 

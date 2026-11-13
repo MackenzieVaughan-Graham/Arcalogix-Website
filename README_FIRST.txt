@@ -1,18 +1,18 @@
-Arcalogix website - About Us authoring sign-in link fix
+Arcalogix / The Common Foundation — Background-Integrated Model Update
 
-Based on the attached source package: Arcalogix-Website(1).zip
+This update removes the dark "One consistent foundation" box entirely and lets the
+3D architectural model visually merge into the white website background.
 
-INSTALL:
-1. Extract this ZIP.
-2. Replace ONLY app/about/page.tsx in your current Next.js project.
-3. Run npm run dev and visit /about.
-4. Click the Sign in link under 02 / Professional Access / Arcalogix authoring.
-   It should open https://projects.arcalogix.com/ in a new tab.
-5. Commit and push to GitHub for your usual Vercel deployment.
+Files to copy into your existing Next.js website (preserve matching paths):
+  components/PortfolioValue.tsx
+  components/PortfolioValue.module.css
+  public/images/common-foundation-model.png  (NEW ASSET)
 
-Only change:
-  authoringLogin:
-    from https://projects.arcalogix.com/login
-    to   https://projects.arcalogix.com/
+The People, Place and Policy cards continue to float around the model on desktop.
+They appear below the model on tablet and mobile to stay readable.
 
-All other links (including Request access), copy, styling, and page behavior unchanged.
+The page content outside this section, header, forms, applications and services
+are untouched. No new packages/dependencies are required.
+
+Installation: unzip into your local project, replacing matching files, then run
+`npm run dev` and inspect Section 01. Commit and push to deploy in Vercel.
