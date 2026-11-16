@@ -11,35 +11,35 @@ const PROJECT_URL = "https://arcalogixdashboard.com/general-submit-project";
 export const metadata: Metadata = {
   title: "View a SIM Project | Arcalogix",
   description:
-    "Follow an Arcalogix project from submission and pricing through a 3D SIM, design documentation, connected operations and portfolio intelligence.",
+    "See how Arcalogix turns building drawings into machine-readable Spatial Intelligence Models (SIMs), with identifiable spaces, structured attributes, spatial relationships and reusable context across planning, delivery and operations.",
 };
 
 const modelStages = [
   {
     number: "01",
     label: "SOURCE",
-    title: "Existing plan",
+    title: "Building information",
     image: "/images/floor-plan.webp",
     alt: "An existing floor plan used as the source for a SIM project",
   },
   {
     number: "02",
-    label: "FOUNDATION",
-    title: "Spatial model",
+    label: "GEOMETRY",
+    title: "Verified spatial structure",
     image: "/images/platform-model-shell.png",
     alt: "A three-dimensional shell model created from the source floor plan",
   },
   {
     number: "03",
-    label: "DECISION",
-    title: "Furnished SIM",
+    label: "CONTEXT",
+    title: "Spaces with meaning",
     image: "/images/platform-furnished-model.png",
     alt: "A furnished three-dimensional SIM showing a planned workplace",
   },
   {
     number: "04",
-    label: "INTELLIGENCE",
-    title: "Connected portfolio",
+    label: "REUSE",
+    title: "Connected intelligence",
     image: "/images/portfolio-model.webp",
     alt: "A connected spatial model representing portfolio intelligence",
   },
@@ -61,22 +61,22 @@ export default function SimProjectPage() {
           <div className={`page-shell ${styles.heroGrid}`}>
             <div className={styles.heroCopy}>
               <p className="eyebrow"><span className="red-dot" /> VIEW A SIM PROJECT</p>
-              <h1 id="sim-project-title">From floor plan to <span>portfolio intelligence.</span></h1>
+              <h1 id="sim-project-title">From floor plan to <span>machine-readable space.</span></h1>
               <p className={styles.heroLead}>
-                Start with one project. Get the clarity to approve a space, the spatial foundation to deliver it, and a 3D SIM that keeps working after construction.
+                A 3D model helps people see a building. A machine-readable Spatial Intelligence Model (SIM) gives its spaces identity, attributes and relationships that software can use—creating a foundation for planning, delivery, operations and portfolio decisions.
               </p>
               <div className={styles.heroActions}>
                 <a className="button button-primary button-large" href={PROJECT_URL} target="_blank" rel="noopener noreferrer">Submit a new project</a>
-                <ContactButton className="button button-secondary button-large" interest="Test fits and planning">Talk through a project</ContactButton>
+                <ContactButton className="button button-secondary button-large" interest="Portfolio strategy">Discuss your spatial data</ContactButton>
               </div>
             </div>
 
             <div className={styles.heroVisual} aria-label="A 3D SIM connects a project from planning through operation">
-              <div className={styles.visualHeader}><span><i /> ARCALOGIX / PROJECT SIM</span><span>ONE CONNECTED RECORD</span></div>
+              <div className={styles.visualHeader}><span><i /> ARCALOGIX / SPATIAL INTELLIGENCE MODEL</span><span>ONE CONNECTED RECORD</span></div>
               <div className={styles.visualImage}>
                 <Image src="/images/common-foundation-model.png" alt="A three-dimensional workplace SIM used throughout a project" fill priority sizes="(max-width: 900px) 100vw, 52vw" />
               </div>
-              <div className={styles.visualFooter}><span>PLAN</span><i /><span>DECIDE</span><i /><span>DELIVER</span><i /><span>OPERATE</span></div>
+              <div className={styles.visualFooter}><span>GEOMETRY</span><i /><span>IDENTITY</span><i /><span>CONTEXT</span><i /><span>REUSE</span></div>
             </div>
           </div>
         </section>
@@ -87,10 +87,10 @@ export default function SimProjectPage() {
           <div className="page-shell">
             <div className={styles.foundationIntro}>
               <div>
-                <p className="eyebrow">02 / ONE SPATIAL FOUNDATION</p>
-                <h2 id="foundation-title">Build the model once.<br /><span>Keep adding value.</span></h2>
+                <p className="eyebrow">02 / THE MACHINE-READABLE FOUNDATION</p>
+                <h2 id="foundation-title">A model shows the space.<br /><span>A SIM gives it meaning.</span></h2>
               </div>
-              <p>The information created to answer the first question—will this space work?—becomes the foundation for every decision that follows.</p>
+              <p>Geometry shows where spaces are. A structured SIM gives them consistent identities, classifications, attributes and relationships—so information can be referenced, compared and reused by people and software.</p>
             </div>
             <div className={styles.modelSequence}>
               {modelStages.map((stage, index) => (
@@ -106,6 +106,32 @@ export default function SimProjectPage() {
                 </article>
               ))}
             </div>
+            <div className={styles.recordExample} aria-label="Illustrative structured spatial record example">
+              <div className={styles.recordExampleIntro}>
+                <p className="eyebrow">SPATIAL DATA / AN ILLUSTRATIVE EXAMPLE</p>
+                <h3>A room is more than <span>a shape.</span></h3>
+                <p>A drawing depicts a room. A machine-readable SIM can describe what that room is, where it belongs, how it connects to other spaces and which standards apply. That makes spatial information useful beyond the original drawing or project.</p>
+                <div className={styles.readableElements} aria-label="The building blocks of machine-readable space"><span>IDENTITY</span><span>ATTRIBUTES</span><span>RELATIONSHIPS</span><span>RULES</span></div>
+              </div>
+              <div className={styles.recordExampleDetail}>
+                <div className={styles.recordExampleTop}><span>SIM / SPATIAL RECORD</span><strong>ROOM-042</strong></div>
+                <dl className={styles.recordFields}>
+                  <div><dt>SPACE ID</dt><dd>ROOM-042</dd></div>
+                  <div><dt>TYPE</dt><dd>Meeting room</dd></div>
+                  <div><dt>CAPACITY</dt><dd>6 people</dd></div>
+                  <div><dt>AREA</dt><dd>180 sq ft</dd></div>
+                  <div><dt>RELATIONSHIP</dt><dd>Adjacent to Corridor C-03</dd></div>
+                  <div><dt>STANDARD</dt><dd>150 sq ft minimum</dd></div>
+                </dl>
+                <div className={styles.recordQuery}>
+                  <span>EXAMPLE MACHINE-READABLE QUESTION</span>
+                  <p>Which six-person meeting rooms meet our minimum area and connect to circulation?</p>
+                  <span>ILLUSTRATIVE RESULT</span>
+                  <strong>ROOM-042 qualifies: 180 sq ft, capacity for six, adjacent to Corridor C-03.</strong>
+                </div>
+                <p className={styles.recordExampleNote}>Illustrative spatial data and query, not a live platform result. The fields, level of structure and supported workflows depend on project inputs, verification and implementation scope.</p>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -113,23 +139,24 @@ export default function SimProjectPage() {
           <div className={`page-shell ${styles.integrationGrid}`}>
             <div className={styles.integrationCopy}>
               <p className="eyebrow">03 / CONNECTED OPERATIONS</p>
-              <h2 id="integration-title">Your SIM should connect to the systems <span>you already use.</span></h2>
+              <h2 id="integration-title">Give your existing systems <span>a shared sense of place.</span></h2>
               <p>
-                Arcalogix is designed to be software- and hardware-agnostic. Compatible sensors, gateways, APIs and enterprise platforms—including IBM environments and other building systems—can feed operational information into the spatial context of the SIM.
+                When a room has a persistent identity, otherwise disconnected information can be associated with the same place. Arcalogix is designed to be software- and hardware-agnostic: project-scoped connections may map a hosted SIM to IoT sensors, building management systems, energy platforms, IWMS/CAFM, CMMS, asset registers and real estate software through suitable APIs, exports or data pipelines.
               </p>
               <ContactButton className={styles.textLink} interest="Digital twins and IoT">Discuss an IoT connection <span aria-hidden="true">↗</span></ContactButton>
             </div>
             <div className={styles.connectionPanel}>
-              <div className={styles.connectionHeader}><span>CONNECTED DATA LAYER</span><span>PLATFORM AGNOSTIC</span></div>
+              <div className={styles.connectionHeader}><span>SHARED SPATIAL CONTEXT</span><span>PLATFORM AGNOSTIC</span></div>
               <div className={styles.connectionBody}>
-                <div className={styles.connectionCore}><small>SPATIAL CONTEXT</small><strong>3D SIM</strong><span>One connected record</span></div>
+                <div className={styles.connectionCore}><small>MACHINE-READABLE PLACE</small><strong>SIM</strong><span>Shared space identity</span></div>
                 <div className={styles.connectionNodes}>
-                  <div><span>01</span><strong>IoT sensors</strong></div>
-                  <div><span>02</span><strong>IBM platforms</strong></div>
-                  <div><span>03</span><strong>Building systems</strong></div>
-                  <div><span>04</span><strong>Enterprise APIs</strong></div>
+                  <div><span>01</span><strong>Sensors + IoT</strong></div>
+                  <div><span>02</span><strong>BMS + energy</strong></div>
+                  <div><span>03</span><strong>FM / IWMS / CMMS</strong></div>
+                  <div><span>04</span><strong>Portfolio tools + APIs</strong></div>
                 </div>
               </div>
+              <p className={styles.connectionNote}>Example software categories, not a list of certified integrations. Availability depends on system access, data quality and agreed implementation scope.</p>
             </div>
           </div>
           <div className={`page-shell ${styles.signalGrid}`}>
@@ -147,13 +174,13 @@ export default function SimProjectPage() {
             </div>
             <div className={styles.portfolioCopy}>
               <p className="eyebrow">04 / PORTFOLIO INTELLIGENCE</p>
-              <h2 id="portfolio-title">One SIM answers a project question. <span>A portfolio changes how decisions are made.</span></h2>
-              <p>As locations are added, Arcalogix creates a more consistent view of the spaces your organization occupies and how they perform.</p>
+              <h2 id="portfolio-title">One space becomes understandable. <span>Every location becomes comparable.</span></h2>
+              <p>When spaces are described using consistent data, the same spatial foundation can support questions across buildings and portfolios—not just a single test fit. The value compounds as more locations and data sources are connected.</p>
               <ul>
-                <li>Compare capacity, utilization and operational signals.</li>
-                <li>Reuse workplace standards across future projects.</li>
-                <li>See patterns across buildings, markets and regions.</li>
-                <li>Prioritize leasing, improvement and investment decisions.</li>
+                <li>Identify and compare rooms, zones and building attributes consistently.</li>
+                <li>Apply people, place and policy requirements across locations.</li>
+                <li>Relate operational and asset data to the right physical spaces.</li>
+                <li>Support planning, design, utilization and investment decisions.</li>
               </ul>
             </div>
           </div>
@@ -161,9 +188,9 @@ export default function SimProjectPage() {
 
         <section className={styles.finalCta} aria-labelledby="start-title">
           <div className={`page-shell ${styles.finalCtaInner}`}>
-            <p className="eyebrow">05 / START THE JOURNEY</p>
-            <h2 id="start-title">Start with one space.<br /><span>Keep the intelligence.</span></h2>
-            <p>Submit the next project you need to evaluate, or speak with us about connecting a wider real estate portfolio.</p>
+            <p className="eyebrow">05 / PUT YOUR SPATIAL DATA TO WORK</p>
+            <h2 id="start-title">Start with the building.<br /><span>Build on the intelligence.</span></h2>
+            <p>Begin with a floor plan or existing building information, or talk with us about structuring spatial data across a larger portfolio. Test fitting is one way to use that foundation—not its limit.</p>
             <div className={styles.finalActions}>
               <a className="button button-primary button-large" href={PROJECT_URL} target="_blank" rel="noopener noreferrer">Submit a new project</a>
               <ContactButton className="button button-secondary button-large" interest="Portfolio strategy">Discuss your portfolio</ContactButton>

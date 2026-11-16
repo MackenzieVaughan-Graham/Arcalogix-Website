@@ -7,74 +7,74 @@ import styles from "./sim-project.module.css";
 const moments = [
   {
     number: "01",
-    phase: "SUBMIT",
-    timeframe: "DAY 0",
-    title: "Share the space and what it needs to do.",
-    description: "Upload the available floor plan, your requirements and the information we need to understand the project.",
-    deliverable: "A complete project brief ready for review",
+    phase: "SOURCE",
+    timeframe: "INPUT",
+    title: "Start with the building information you have.",
+    description: "A floor plan, an existing model or other building information becomes the starting point. We establish the intended use and identify what needs to be checked before the information is reused.",
+    deliverable: "A defined source and spatial-data brief",
     image: "/images/floor-plan.webp",
-    alt: "Existing floor plan submitted to begin an Arcalogix project",
+    alt: "Existing floor plan used as source information for a machine-readable building model",
   },
   {
     number: "02",
-    phase: "CONFIRM",
-    timeframe: "12 HOURS",
-    title: "Know the scope and price before work begins.",
-    description: "Our team reviews the submission, resolves questions and confirms the project price so the decision is clear.",
-    deliverable: "Confirmed project scope and price",
+    phase: "VALIDATE",
+    timeframe: "REVIEW",
+    title: "Make the geometry a reliable reference.",
+    description: "Source drawings and dimensions are reviewed with architectural context. Assumptions and gaps are identified so that the resulting geometry is a useful foundation rather than another disconnected visual.",
+    deliverable: "Reviewed building geometry and source assumptions",
     image: "/images/platform-floorplan.png",
-    alt: "Validated project floor plan reviewed by Arcalogix",
+    alt: "Reviewed architectural floor plan with spatial boundaries and dimensions",
   },
   {
     number: "03",
-    phase: "APPROVE",
-    timeframe: "YOUR APPROVAL",
-    title: "Move forward when the project is ready.",
-    description: "Review the quote and scope in your account. Approval gives the Arcalogix team the signal to begin the SIM.",
-    deliverable: "An approved project ready for production",
+    phase: "STRUCTURE",
+    timeframe: "MODEL",
+    title: "Give each space a digital identity.",
+    description: "The building is translated into a Spatial Intelligence Model (SIM). Rooms and zones can be organized by identifiers, types, areas and relationships, with available attributes linked to the corresponding spaces.",
+    deliverable: "A reusable 3D SIM and structured spatial context",
     image: "/images/platform-model-shell.png",
-    alt: "Early three-dimensional spatial model ready for production",
+    alt: "Three-dimensional spatial shell that can support identifiable rooms and spatial relationships",
   },
   {
     number: "04",
-    phase: "RECEIVE + DECIDE",
-    timeframe: "WITHIN 48 HOURS",
-    title: "Receive the SIM and validate the lease decision.",
-    description: "The interactive 3D SIM brings the test fit, capacity, program and workplace standards into one environment—giving your team what it needs to decide whether the space works before signing the lease.",
-    deliverable: "Interactive 3D SIM, standards-based test fit and decision evidence",
+    phase: "APPLY",
+    timeframe: "USE",
+    title: "Use spatial intelligence to answer real questions.",
+    description: "A structured SIM can support practical applications such as standards-based test fitting, capacity studies and comparisons between properties. These are uses of the shared spatial record—not separate one-off models.",
+    deliverable: "Project-specific planning evidence and decision support",
     image: "/images/platform-furnished-model.png",
-    alt: "Furnished three-dimensional SIM showing a standards-based test fit",
+    alt: "Furnished spatial model showing a standards-based planning application of a SIM",
   },
   {
     number: "05",
-    phase: "DELIVER",
-    timeframe: "DESIGN + PERMIT",
-    title: "Carry the same spatial foundation into delivery.",
-    description: "The approved SIM can support the required construction and permitting documentation without recreating the project geometry from the beginning.",
-    deliverable: "A reusable model foundation for project documentation",
+    phase: "REUSE",
+    timeframe: "DELIVER",
+    title: "Keep the same spatial context through delivery.",
+    description: "Instead of starting from scratch for each milestone, the reviewed spatial foundation can inform architectural design and documentation as the project develops, subject to the required professional review.",
+    deliverable: "A spatial reference that carries forward into design",
     image: "/images/drawing-workflow.webp",
-    alt: "Construction and permitting drawing workflow based on the project SIM",
+    alt: "Architectural drawing workflow developed using the same spatial foundation",
   },
   {
     number: "06",
-    phase: "OPERATE",
-    timeframe: "AFTER BUILD",
-    title: "Connect the completed space to live information.",
-    description: "Compatible IoT and enterprise systems can add occupancy, utilization, environmental, energy and asset signals to the SIM.",
-    deliverable: "A connected digital-twin foundation",
+    phase: "CONNECT",
+    timeframe: "EXTEND",
+    title: "Bring other systems into spatial context.",
+    description: "Where suitable data is available, a hosted SIM can provide the location reference for information from sensors, assets, maintenance, energy and other enterprise systems. Integrations are software-agnostic and scoped for each project.",
+    deliverable: "A foundation for connected operations and digital twins",
     image: "/images/common-foundation-model.png",
-    alt: "Illustrative three-dimensional SIM with occupancy, asset, environmental and maintenance information",
+    alt: "Illustrative SIM with spatial overlays for occupancy, assets, environment and maintenance",
     kind: "operations",
   },
   {
     number: "07",
     phase: "SCALE",
-    timeframe: "ONE PLATFORM",
-    title: "Bring every project and existing space into one platform.",
-    description: "Combining new SIM projects with your existing spaces creates one consistent spatial record across the portfolio—driving portfolio intelligence and clearer decisions at every scale.",
-    deliverable: "One platform for new projects, existing spaces and portfolio intelligence",
+    timeframe: "PORTFOLIO",
+    title: "Make the information useful across locations.",
+    description: "Consistent identities and attributes make it possible to organize information across spaces, buildings and regions. A connected portfolio supports more comparable decisions as locations and data sources are added.",
+    deliverable: "Reusable spatial intelligence across the portfolio",
     image: "/images/portfolio-model.webp",
-    alt: "Connected spatial models forming a portfolio intelligence platform",
+    alt: "Spatial models supporting connected information across a building portfolio",
   },
 ] as const;
 
@@ -145,10 +145,10 @@ export default function ProjectScrollJourney() {
   return (
     <section className={styles.scrollJourney} aria-labelledby="journey-title">
       <div className={`page-shell ${styles.scrollIntro}`}>
-        <p className="eyebrow">01 / THE PROJECT JOURNEY</p>
+        <p className="eyebrow">01 / HOW A BUILDING BECOMES MACHINE-READABLE</p>
         <div>
-          <h2 id="journey-title">Scroll through the life of <span>one connected SIM.</span></h2>
-          <p>Each stage delivers something useful now while building the spatial foundation for what comes next.</p>
+          <h2 id="journey-title">A building becomes data.<br /><span>Its value keeps growing.</span></h2>
+          <p>Follow one source drawing as it becomes reviewed geometry, identifiable spaces and reusable context for people, applications and connected systems.</p>
         </div>
       </div>
 
@@ -229,7 +229,7 @@ export default function ProjectScrollJourney() {
       </div>
 
       <p className={`page-shell ${styles.timelineNote}`}>
-        The 12-hour and 48-hour targets begin once the required project inputs are complete. Source-file quality, scope and requested complexity can affect delivery.
+        Illustrative lifecycle. The information available in a SIM, the level of verification and any connected operations depend on source quality, selected services and each project&apos;s scope.
       </p>
     </section>
   );

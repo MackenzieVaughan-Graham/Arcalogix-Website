@@ -199,3 +199,29 @@
 @media (prefers-reduced-motion: reduce) {
   .page *, .page *::before, .page *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
 }
+
+/* A proof-oriented example within the existing SIM foundation, matching the site's editorial data styling. */
+.recordExample { display: grid; grid-template-columns: minmax(260px,.80fr) minmax(0,1.20fr); gap: clamp(40px,6vw,104px); margin-top: clamp(75px,8vw,126px); padding-top: clamp(36px,4vw,62px); border-top: 1px solid #dcdce0; align-items: start; }
+.recordExampleIntro h3 { max-width: 510px; margin: 0; font-size: clamp(39px,4.3vw,68px); line-height: 1.06; font-weight: 765; letter-spacing: -.065em; }
+.recordExampleIntro h3 span { color: #9fa0a7; }
+.recordExampleIntro > p:not(.eyebrow) { max-width: 480px; margin: 25px 0 0; color: #6f7178; font-size: clamp(16px,1.3vw,18px); line-height: 1.65; }
+.recordExampleDetail { border: 1px solid #e0e0e4; border-radius: 16px; overflow: hidden; background: #fff; }
+.recordExampleTop { min-height: 54px; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 13px 25px; border-bottom: 1px solid #e5e5e8; color: #8c8e95; font-size: 10px; font-weight: 800; letter-spacing: .14em; }
+.recordExampleTop strong { color: #be2031; font-size: 12px; }
+.recordFields { display: grid; margin: 0; padding: 9px 25px 15px; }
+.recordFields div { display: grid; grid-template-columns: minmax(135px,.45fr) minmax(0,1fr); gap: 24px; padding: 15px 0; border-bottom: 1px solid #eeeef0; align-items: center; }
+.recordFields div:last-child { border-bottom: 0; }
+.recordFields dt { color: #999ba2; font-size: 10px; font-weight: 770; letter-spacing: .12em; }
+.recordFields dd { margin: 0; color: #292a31; font-size: 15px; font-weight: 660; }
+.recordQuery { padding: 26px 25px; background: #f7f7f8; border-top: 1px solid #e5e5e8; }
+.recordQuery > span { display: block; color: #bd2031; font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+.recordQuery p { margin: 9px 0 21px; color: #45464e; font-size: clamp(15px,1.24vw,18px); line-height: 1.5; font-weight: 600; }
+.recordQuery strong { display: block; margin-top: 9px; color: #2d2f36; font-size: 14px; line-height: 1.55; font-weight: 700; }
+.recordExampleNote { margin: 0; padding: 14px 25px 18px; color: #92949b; font-size: 11px; line-height: 1.55; border-top: 1px solid #e5e5e8; }
+.connectionNote { max-width: 700px; margin: 16px 0 0; color: #92949e; font-size: 11px; line-height: 1.55; }
+@media (max-width: 900px) { .recordExample { grid-template-columns: 1fr; gap: 30px; } .recordExampleIntro > p:not(.eyebrow) { max-width: 720px; } }
+@media (max-width: 580px) { .recordFields div { grid-template-columns: 110px minmax(0,1fr); gap: 10px; } .recordExampleTop, .recordFields, .recordQuery, .recordExampleNote { padding-left: 18px; padding-right: 18px; } .recordFields dd { font-size: 14px; } }
+
+/* Machine-readable building blocks: restrained terminology within the existing record example. */
+.readableElements { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 26px; }
+.readableElements span { display: inline-flex; align-items: center; min-height: 30px; padding: 8px 11px; border: 1px solid #e0e0e4; border-radius: 5px; background: #fff; color: #64666f; font-size: 9px; font-weight: 780; letter-spacing: .09em; }

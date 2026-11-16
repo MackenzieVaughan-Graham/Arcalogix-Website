@@ -7,8 +7,9 @@ const steps = [
   {
     number: "01",
     label: "VALIDATE",
-    title: "Know what the building can support.",
-    body: "We begin with the 2D floor plan, reviewing dimensions, geometry and architectural conditions so every decision starts from a reliable understanding of the space.",
+    title: "Understand the building as information.",
+    body: "We start with available building information—often a 2D floor plan—and review geometry, dimensions and architectural conditions. Arch!e-assisted interpretation supports conversion while our architectural team checks source assumptions.",
+    technology: "ARCH!E / ASSISTED CONVERSION + REVIEW",
     resultLabel: "WHAT YOU GET",
     result: "Validated building information, ready to use.",
     image: "/images/platform-floorplan.png",
@@ -19,7 +20,8 @@ const steps = [
     number: "02",
     label: "MODEL",
     title: "Build a spatial record you can reuse.",
-    body: "Validated drawings become an interactive 3D Spatial Intelligence Model (SIM), connecting geometry and architectural information to one persistent spatial record.",
+    body: "Validated drawings become an interactive Spatial Intelligence Model (SIM). Its geometry and space attributes provide reusable context; the evolving AxSIM layer is intended to support richer structured records and relationships.",
+    technology: "AXSIM / STRUCTURED SPATIAL FOUNDATION",
     resultLabel: "WHAT YOU GET",
     result: "A digital foundation for planning, delivery and future use.",
     image: "/images/platform-model-shell.png",
@@ -30,7 +32,8 @@ const steps = [
     number: "03",
     label: "APPLY STANDARDS",
     title: "Make every option comparable.",
-    body: "Your company requirements guide the test fit: capacity, room programs, circulation and workplace standards. Our internal architectural team reviews the result before delivery.",
+    body: "AxLayout supports standards-based test fitting against your capacity, room programs, circulation and workplace policies. Our internal architectural team reviews the result before delivery.",
+    technology: "AXLAYOUT / STANDARDS-BASED PLANNING",
     resultLabel: "REPEATABLE PLANNING",
     result: "A verified 3D test fit you can compare across locations.",
     image: "/images/platform-furnished-model.png",
@@ -41,9 +44,10 @@ const steps = [
     number: "04",
     label: "EXTEND",
     title: "Keep using the model after the decision.",
-    body: "If you choose the location, its hosted SIM can carry into operations. As integrations expand, it can connect occupancy, assets, maintenance, service and energy usage, and operational costs.",
+    body: "A hosted SIM can be the spatial reference for occupancy, assets, maintenance and energy data. We work across software and hardware ecosystems; each operational connection is scoped around available data and compatible integrations.",
+    technology: "SOFTWARE-AGNOSTIC / SCOPED INTEGRATIONS",
     resultLabel: "EXPANDING CAPABILITIES",
-    result: "An operational digital-twin foundation. Active SIM hosting and compatible integrations required.",
+    result: "A foundation for connected operations; active hosting, compatible data sources and project-specific integrations required.",
     image: null,
     alt: "",
     previewLabel: "ILLUSTRATIVE PORTFOLIO INTELLIGENCE",
@@ -109,8 +113,8 @@ export default function PlatformJourney() {
       <div className="page-shell">
         <div className="section-heading journey-heading">
           <p className="eyebrow">02 / THE PLATFORM</p>
-          <h2 id="journey-heading">From a floor plan<br /><span>to a lasting spatial record.</span></h2>
-          <p className="section-lede">The same information should do more than answer one project question. See how Arcalogix builds the spatial foundation that supports decisions from evaluation through operations.</p>
+          <h2 id="journey-heading">From building information<br /><span>to spatial intelligence.</span></h2>
+          <p className="section-lede">Machine-readability starts by giving physical space a consistent digital identity and context. See how Arcalogix validates, structures, applies and extends building information—so the same foundation can support many applications over time.</p>
         </div>
         <div className="journey-grid">
           <div className="journey-steps">
@@ -124,6 +128,7 @@ export default function PlatformJourney() {
                 <span className="journey-num">{step.number} / {step.label}</span>
                 <h3>{step.title}</h3>
                 <p>{step.body}</p>
+                <p className="journey-technology"><span>TECHNOLOGY</span><strong>{step.technology}</strong></p>
                 <div className="journey-outcome"><small>{step.resultLabel}</small><strong>{step.result}</strong></div>
               </div>
             ))}

@@ -1,15 +1,6 @@
-# Arcalogix Website Revision — Common Foundation Visual Update
+# Copy change log
 
-## Updated section
-- `01 / The Portfolio Challenge` → the visual system under **The Common Foundation**
-
-## What changed
-- Replaced the flat People / Place / Policy card layout and separate dark record box.
-- Added a more integrated **3D model scene** using the existing furnished model image.
-- Positioned **People**, **Place**, and **Policy** as separate floating rectangles around the model.
-- Converted the previous dark record box into an integrated **Arcalogix / Connected Spatial Record** plaque below the model.
-- Kept the surrounding section messaging and the three outcome statements unchanged.
-
-## Files changed
-- `components/PortfolioValue.tsx`
-- `components/PortfolioValue.module.css`
+| File | Revision |
+|---|---|
+| `components/PortfolioValue.tsx` | Reposition Section 01 around machine-readable built-world intelligence and its multi-use-case value. No markup structure, CSS class or image source changed. |
+| `components/PlatformJourney.tsx` | Make Section 02 explicitly explain how spatial intelligence is created. Preserve scroll logic and step progression. |
